@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Retangulo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/Fonts/TravelingTypewriter.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/Fonts/Typewriter.tres" type="DynamicFont" id=4]
 [ext_resource path="res://scenes/Recebimento.gd" type="Script" id=5]
+[ext_resource path="res://scenes/Relogio.gd" type="Script" id=6]
+[ext_resource path="res://scenes/Painel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Base.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Codificador.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -47,27 +51,87 @@ margin_right = -112.0
 margin_bottom = 278.0
 color = Color( 0.541176, 0.435294, 0.337255, 1 )
 
+[node name="Legenda" parent="Recebimento" instance=ExtResource( 2 )]
+margin_left = -456.0
+margin_top = 238.0
+margin_right = -112.0
+margin_bottom = 278.0
+color = Color( 0.988235, 0.909804, 0.772549, 1 )
+
+[node name="Label" type="Label" parent="Recebimento/Legenda"]
+margin_left = 9.09747
+margin_top = -0.507568
+margin_right = 334.097
+margin_bottom = 38.4924
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Mensagens recebidas"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Mensagem" parent="Recebimento" instance=ExtResource( 2 )]
 margin_left = -81.0
-margin_top = -280.508
-margin_right = 441.0
-margin_bottom = -70.5083
+margin_top = -281.0
+margin_right = 460.0
+margin_bottom = -71.0
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
+
+[node name="Label" type="Label" parent="Recebimento/Mensagem"]
+margin_left = 15.1011
+margin_top = 10.9276
+margin_right = 541.101
+margin_bottom = 175.928
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Whvwh lqlfldo"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
 
 [node name="TabelaCifra" parent="Recebimento" instance=ExtResource( 2 )]
 margin_left = -81.0
 margin_top = -79.0
-margin_right = 441.0
-margin_bottom = 127.0
+margin_right = 460.0
+margin_bottom = 137.0
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
 
+[node name="Label" type="Label" parent="Recebimento/TabelaCifra"]
+margin_left = 13.0
+margin_top = 5.0
+margin_right = 539.0
+margin_bottom = 212.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "A->X  B->Y  C->Z  D->A  E->B  
+F->C  G->D  H->E  I->F  J->G  
+K->H  L->I  M->J  N->K  O->L  
+P->M  Q->N  R->O  S->P  T->Q  
+U->R  V->S  W->T  X->U  Y->V  Z->W"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
 [node name="LeftCifra" type="Button" parent="Recebimento"]
-margin_left = 421.0
-margin_top = 448.292
-margin_right = 493.0
-margin_bottom = 495.292
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -78.7387
+margin_top = 156.099
+margin_right = -6.73871
+margin_bottom = 203.099
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -95,9 +159,9 @@ __meta__ = {
 
 [node name="Cifra" parent="Recebimento" instance=ExtResource( 2 )]
 margin_left = 10.2
-margin_top = 145.442
+margin_top = 153.158
 margin_right = 355.2
-margin_bottom = 198.442
+margin_bottom = 206.158
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
 
 [node name="Label" type="Label" parent="Recebimento/Cifra"]
@@ -122,11 +186,16 @@ __meta__ = {
 }
 
 [node name="RightCifra" type="Button" parent="Recebimento"]
-margin_left = 869.019
-margin_top = 447.518
-margin_right = 941.019
-margin_bottom = 494.518
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 371.954
+margin_top = 156.0
+margin_right = 443.954
+margin_bottom = 203.0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -167,12 +236,53 @@ margin_right = -112.0
 margin_bottom = 37.0
 color = Color( 0.541176, 0.435294, 0.337255, 1 )
 
+[node name="Base" parent="Envio/Bases" instance=ExtResource( 8 )]
+
+[node name="Legenda" parent="Envio" instance=ExtResource( 2 )]
+margin_left = -456.181
+margin_top = -1.87408
+margin_right = -112.181
+margin_bottom = 38.1259
+color = Color( 0.988235, 0.909804, 0.772549, 1 )
+
+[node name="Label" type="Label" parent="Envio/Legenda"]
+margin_left = 9.09747
+margin_top = -0.507568
+margin_right = 334.097
+margin_bottom = 38.4924
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Bases militares"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Estoque" parent="Envio" instance=ExtResource( 2 )]
 margin_left = -456.0
 margin_top = 50.0
 margin_right = -112.0
 margin_bottom = 276.0
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
+
+[node name="Label" type="Label" parent="Envio/Estoque"]
+margin_left = 14.0
+margin_top = 11.0993
+margin_right = 339.0
+margin_bottom = 216.099
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "ESTOQUE
+20x Rações
+30x Destacamentos
+"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
 
 [node name="Painel" parent="Envio" instance=ExtResource( 2 )]
 margin_left = -81.0
@@ -181,11 +291,17 @@ margin_right = 441.0
 margin_bottom = 203.0
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
 
+[node name="PainelTexto" parent="Envio/Painel" instance=ExtResource( 7 )]
+
 [node name="Troca" type="Button" parent="."]
-margin_left = 418.15
-margin_top = 524.663
-margin_right = 599.15
-margin_bottom = 571.663
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -83.3676
+margin_top = 222.877
+margin_right = 97.6324
+margin_bottom = 269.877
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_lock_": true,
@@ -220,33 +336,36 @@ margin_top = 220.263
 margin_right = 248.0
 margin_bottom = 273.263
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
+script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Relogio"]
 anchor_left = 0.456835
 anchor_top = 0.386792
 anchor_right = 0.543165
 anchor_bottom = 0.613208
-margin_left = -22.8017
-margin_top = -10.5
-margin_right = 24.1983
-margin_bottom = 10.5
+margin_left = -30.423
+margin_top = -15.9401
+margin_right = 56.6635
+margin_bottom = 15.0599
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "15:03"
-align = 1
 valign = 1
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Menu" type="Button" parent="."]
-margin_left = 763.413
-margin_top = 523.61
-margin_right = 944.413
-margin_bottom = 570.61
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 262.964
+margin_top = 222.0
+margin_right = 443.964
+margin_bottom = 269.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_lock_": true,
@@ -274,5 +393,11 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="Codificador" type="Node" parent="."]
+script = ExtResource( 9 )
 [connection signal="button_up" from="Recebimento/LeftCifra" to="Recebimento" method="_on_LeftCifra_button_up"]
 [connection signal="button_up" from="Recebimento/RightCifra" to="Recebimento" method="_on_RightCifra_button_up"]
+[connection signal="base_examined" from="Envio/Bases/Base" to="." method="base_examined"]
+[connection signal="envio" from="Envio/Painel/PainelTexto" to="." method="_on_PainelTexto_envio"]
+[connection signal="button_up" from="Troca" to="." method="_on_Troca_button_up"]

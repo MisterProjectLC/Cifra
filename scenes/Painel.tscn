@@ -1,0 +1,371 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/Fonts/Typewriter.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Fonts/TravelingTypewriter.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/Painel.gd" type="Script" id=3]
+[ext_resource path="res://scenes/Retangulo.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 45
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 26
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 28
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="PainelTexto" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Titulo" type="Label" parent="."]
+margin_left = 17.0
+margin_top = 9.21606
+margin_right = 508.0
+margin_bottom = 66.2161
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "WILHELM, KLEINBURG"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Enviando" type="Label" parent="."]
+margin_left = 19.2161
+margin_top = 64.8019
+margin_right = 344.216
+margin_bottom = 103.802
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Enviando..."
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MenosRacao" type="Button" parent="."]
+margin_left = 20.5695
+margin_top = 107.106
+margin_right = 50.5695
+margin_bottom = 143.106
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MenosRacao"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -161.0
+margin_top = -18.9117
+margin_right = 160.0
+margin_bottom = 15.0883
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.541176, 0.545098, 0.564706, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "-"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MaisRacao" type="Button" parent="."]
+margin_left = 55.5918
+margin_top = 107.461
+margin_right = 85.5918
+margin_bottom = 143.461
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MaisRacao"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -161.0
+margin_top = -18.9117
+margin_right = 160.0
+margin_bottom = 15.0883
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.541176, 0.545098, 0.564706, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MenosDestac" type="Button" parent="."]
+margin_left = 20.6716
+margin_top = 148.5
+margin_right = 50.6716
+margin_bottom = 184.5
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MenosDestac"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -161.0
+margin_top = -18.9117
+margin_right = 160.0
+margin_bottom = 15.0883
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.541176, 0.545098, 0.564706, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "-"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MaisDestac" type="Button" parent="."]
+margin_left = 56.0099
+margin_top = 148.855
+margin_right = 86.0099
+margin_bottom = 184.855
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MaisDestac"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -161.0
+margin_top = -18.9117
+margin_right = 160.0
+margin_bottom = 15.0883
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.541176, 0.545098, 0.564706, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Dados" type="Label" parent="."]
+margin_left = 96.2139
+margin_top = 107.18
+margin_right = 421.214
+margin_bottom = 188.18
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0x Rações
+0x Destacamentos"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="AntMensagem" type="Button" parent="."]
+margin_left = 21.2704
+margin_top = 222.744
+margin_right = 51.2704
+margin_bottom = 258.744
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="AntMensagem"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -161.0
+margin_top = -18.9117
+margin_right = 160.0
+margin_bottom = 15.0883
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.541176, 0.545098, 0.564706, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "<"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ProxMensagem" type="Button" parent="."]
+margin_left = 56.6087
+margin_top = 223.098
+margin_right = 86.6087
+margin_bottom = 259.098
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ProxMensagem"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -161.0
+margin_top = -18.9117
+margin_right = 160.0
+margin_bottom = 15.0883
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.541176, 0.545098, 0.564706, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = ">"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Mensagem" type="Label" parent="."]
+margin_left = 15.5084
+margin_top = 183.842
+margin_right = 340.508
+margin_bottom = 222.842
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Mensagem:"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="NomeMsg" type="Label" parent="."]
+margin_left = 103.955
+margin_top = 223.787
+margin_right = 428.955
+margin_bottom = 259.787
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Atacar"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextoMsg" parent="." instance=ExtResource( 4 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.3128
+margin_top = 268.677
+margin_right = 493.313
+margin_bottom = 409.678
+color = Color( 0.988235, 0.909804, 0.772549, 1 )
+
+[node name="Label" type="Label" parent="TextoMsg"]
+margin_left = 12.0
+margin_top = 10.0
+margin_right = 467.0
+margin_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Avance contra as tropas
+inimigas."
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Enviar" type="Button" parent="."]
+margin_left = 22.0
+margin_top = 423.0
+margin_right = 156.0
+margin_bottom = 470.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Enviar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -161.0
+margin_top = -18.9117
+margin_right = 160.0
+margin_bottom = 15.0883
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.541176, 0.545098, 0.564706, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "ENVIAR"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+[connection signal="button_up" from="MenosRacao" to="." method="_on_MenosRacao_button_up"]
+[connection signal="button_up" from="MaisRacao" to="." method="_on_MaisRacao_button_up"]
+[connection signal="button_up" from="MenosDestac" to="." method="_on_MenosDestac_button_up"]
+[connection signal="button_up" from="MaisDestac" to="." method="_on_MaisDestac_button_up"]
+[connection signal="button_up" from="AntMensagem" to="." method="_on_AntMensagem_button_up"]
+[connection signal="button_up" from="ProxMensagem" to="." method="_on_ProxMensagem_button_up"]
+[connection signal="button_up" from="Enviar" to="." method="_on_Enviar_button_up"]
