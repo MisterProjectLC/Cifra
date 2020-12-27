@@ -16,7 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Cifra"
+run/main_scene="res://scenes/Main.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1000
 
 [rendering]
 
