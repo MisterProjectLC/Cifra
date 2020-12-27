@@ -1,7 +1,12 @@
 extends Control
 
-var cifras = ["CESAR-3", "ATBASH", "ROT13", "REVERSO", "POLYBIUS","MORSE", "NUMEROS"]
-var tabelas = ["""A>X  B>Y  C>Z  D>A  E>B  F>C
+var cifras = ["NUMEROS", "CESAR-3", "ATBASH", "ROT13", "REVERSO", "POLYBIUS","MORSE", "MORSE - NUMEROS"]
+var tabelas = ["""0>5  1>6  2>7  3>8  4>9
+5>4  6>3  7>2  8>1  9>0
+
+Usado com Cesar-3, Atbash,
+Rot13 e Polybius.""",
+	"""A>X  B>Y  C>Z  D>A  E>B  F>C
 G>D  H>E  I>F  J>G  K>H
 L>I  M>J  N>K  O>L  P>M
 Q>N  R>O  S>P  T>Q  U>R
@@ -29,9 +34,7 @@ G>__.  H>....   I>..    J>.___ K>_._
 L>._..   M>__  N>_.   O>___ P>.__. 
 Q>__._  R>._.  S>...   T>_    U>.._  
 V>..._   W>.__  X>_.._ Y>_.__ Z>__..""",
-"""0>9  1>3  2>7  3>1  4>5
-5>4  6>8  7>2  8>6  9>0
-0>_____  1>.____  2>..___  3->...__  
+"""0>_____  1>.____  2>..___  3->...__  
 4->...._     5>.....     6>_....    7>__...  
 8>___..    9>____."""]
 var cifra_atual = 0

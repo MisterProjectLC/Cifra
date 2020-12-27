@@ -9,7 +9,7 @@ var mes = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	atualizar_estoque(5, 30)
-	$Codificador.morse("teste abc".to_lower())
+	$Codificador.codificar("teste abc".to_lower(), "cesar")
 
 
 func atualizar_estoque(racoes, destacamentos):
@@ -34,8 +34,8 @@ func _on_Troca_button_up():
 
 
 func base_examined(base):
-	$Envio/Painel.base_examined(base)
+	$Envio/Painel/PainelTexto.base_examined(base)
 
 
 func _on_PainelTexto_envio(racoes, destacamentos, msg_atual):
-	atualizar_estoque(racoes, destacamentos)
+	atualizar_estoque(estoque_racoes-racoes, estoque_destac-destacamentos)
