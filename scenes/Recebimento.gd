@@ -1,24 +1,24 @@
 extends Control
 
-var cifras = ["NUMEROS", "CESAR-3", "ATBASH", "ROT13", "REVERSO", "POLYBIUS","MORSE", "MORSE - NUMEROS"]
+var cifras = ["NUMEROS", "CESAR-3", "CESAR-7", "ATBASH", "REVERSO", "POLYBIUS","MORSE", "MORSE - NUMEROS"]
 var tabelas = ["""0>5  1>6  2>7  3>8  4>9
 5>4  6>3  7>2  8>1  9>0
 
-Usado com Cesar-3, Atbash,
-Rot13 e Polybius.""",
+Usado com Cesar-3, Cesar-7,
+Atbash e Polybius.""",
 	"""A>X  B>Y  C>Z  D>A  E>B  F>C
 G>D  H>E  I>F  J>G  K>H
 L>I  M>J  N>K  O>L  P>M
 Q>N  R>O  S>P  T>Q  U>R
 V>S  W>T  X>U  Y>V  Z>W""",
-"""A>Z  B>Y  C>X  D>W  E>V  F>U
-G>T  H>S  I>R  J>Q  K>P
-L>O  M>N  N>M  O>L  P>K
-Q>J  R>I  S>H  T>G  U>F
-V>E  W>D  X>C  Y>B  Z>A""",
-"""A<->N  B<->O  C<->P  D<->Q
-E<->R  F<->S  G<->T  H<->U
-I<->V  J<->W  K<->X  L<->Y  M<->Z""",
+"""A>T  B>U  C>V  D>W  E>X  F>Y
+G>Z  H>A  I>B  J>C  K>D
+L>E  M>F  N>G  O>H  P>I
+Q>J  R>K  S>L  T>M  U>N
+V>O  W>P  X>Q  Y>R  Z>S""",
+"""A<->Z  B<->Y  C<->X  D<->W
+E<->V  F<->U  G<->T  H<->S
+I<->R  J<->Q  K<->P  L<->O  M<->N""",
 """Cada palavra está com sua
 ordem reversa.
 Exemplo:
@@ -34,8 +34,8 @@ G>__.  H>....   I>..    J>.___ K>_._
 L>._..   M>__  N>_.   O>___ P>.__. 
 Q>__._  R>._.  S>...   T>_    U>.._  
 V>..._   W>.__  X>_.._ Y>_.__ Z>__..""",
-"""0>_____  1>.____  2>..___  3->...__  
-4->...._     5>.....     6>_....    7>__...  
+"""0>_____  1>.____  2>..___  3>...__  
+4>...._      5>.....     6>_....    7>__...  
 8>___..    9>____."""]
 var cifra_atual = 0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Retangulo.tscn" type="PackedScene" id=2]
@@ -9,6 +9,11 @@
 [ext_resource path="res://scenes/Painel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Base.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Codificador.gd" type="Script" id=9]
+[ext_resource path="res://scenes/Pedido.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/FadeIn.gd" type="Script" id=11]
+[ext_resource path="res://scenes/Pedidos.gd" type="Script" id=12]
+[ext_resource path="res://scenes/Timeline.gd" type="Script" id=13]
+[ext_resource path="res://scenes/Personagens/Shelberg.gd" type="Script" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -24,6 +29,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Codificador" type="Node" parent="."]
+script = ExtResource( 9 )
+
+[node name="Timeline" type="Node" parent="."]
+script = ExtResource( 13 )
+
+[node name="Personagens" type="Node" parent="."]
+
+[node name="Shelberg" type="Node" parent="Personagens"]
+script = ExtResource( 14 )
+
 [node name="Fundo" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -36,6 +52,7 @@ __meta__ = {
 }
 
 [node name="Recebimento" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 5 )
@@ -50,6 +67,8 @@ margin_top = -280.0
 margin_right = -112.0
 margin_bottom = 278.0
 color = Color( 0.541176, 0.435294, 0.337255, 1 )
+script = ExtResource( 12 )
+pedido = ExtResource( 10 )
 
 [node name="Legenda" parent="Recebimento" instance=ExtResource( 2 )]
 margin_left = -456.0
@@ -80,17 +99,16 @@ margin_bottom = -71.0
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
 
 [node name="Label" type="Label" parent="Recebimento/Mensagem"]
-margin_left = 15.1011
-margin_top = 10.9276
-margin_right = 541.101
-margin_bottom = 175.928
+margin_left = 15.0
+margin_top = 11.0
+margin_right = 527.0
+margin_bottom = 198.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Whvwh lqlfldo"
+autowrap = true
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -221,7 +239,6 @@ __meta__ = {
 }
 
 [node name="Envio" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -236,7 +253,31 @@ margin_right = -112.0
 margin_bottom = 37.0
 color = Color( 0.541176, 0.435294, 0.337255, 1 )
 
-[node name="Base" parent="Envio/Bases" instance=ExtResource( 8 )]
+[node name="Weinstein" parent="Envio/Bases" instance=ExtResource( 8 )]
+nome = "Weinstein"
+local = "Toulann"
+
+[node name="Shelberg" parent="Envio/Bases" instance=ExtResource( 8 )]
+margin_top = 81.8621
+margin_bottom = 128.862
+nome = "Shelberg"
+local = "Arnheim"
+
+[node name="Mish" parent="Envio/Bases" instance=ExtResource( 8 )]
+margin_left = 8.81451
+margin_top = 150.675
+margin_right = 332.815
+margin_bottom = 197.675
+nome = "Mish"
+local = "Kleinhorst"
+
+[node name="Bardon" parent="Envio/Bases" instance=ExtResource( 8 )]
+margin_left = 8.81451
+margin_top = 220.328
+margin_right = 332.815
+margin_bottom = 267.328
+nome = "Bardon"
+local = "Flarsink"
 
 [node name="Legenda" parent="Envio" instance=ExtResource( 2 )]
 margin_left = -456.181
@@ -394,10 +435,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Codificador" type="Node" parent="."]
-script = ExtResource( 9 )
+[node name="FadeIn" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pedido_acessado" from="Recebimento/Pedidos" to="." method="pedido_acessado"]
 [connection signal="button_up" from="Recebimento/LeftCifra" to="Recebimento" method="_on_LeftCifra_button_up"]
 [connection signal="button_up" from="Recebimento/RightCifra" to="Recebimento" method="_on_RightCifra_button_up"]
-[connection signal="base_examined" from="Envio/Bases/Base" to="." method="base_examined"]
+[connection signal="base_examined" from="Envio/Bases/Weinstein" to="." method="base_examined"]
+[connection signal="base_examined" from="Envio/Bases/Shelberg" to="." method="base_examined"]
+[connection signal="base_examined" from="Envio/Bases/Mish" to="." method="base_examined"]
+[connection signal="base_examined" from="Envio/Bases/Bardon" to="." method="base_examined"]
 [connection signal="envio" from="Envio/Painel/PainelTexto" to="." method="_on_PainelTexto_envio"]
 [connection signal="button_up" from="Troca" to="." method="_on_Troca_button_up"]

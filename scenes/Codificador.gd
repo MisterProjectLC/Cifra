@@ -4,10 +4,10 @@ var alphabet = ['a','b','c','d','e','f','g','h','i','j',
 				'k','l','m','n','o','p','q','r','s','t',
 				'u','v','w','x','w','x','y','z']
 
-var morse = ["._", "_...", "_._.", "_..", ".", ".._.",
+var morses = ["._", "_...", "_._.", "_..", ".", ".._.",
 			"__.", "....", "..", ".___", "_._",
 			"._..", "__", "_.", "___", ".__.",
-			"__._", "._.", "...", "._", ".._",
+			"__._", "._.", "...", "_", ".._",
 			"..._", ".__", "_.._", "_.__", "__.."]
 
 var morse_nums = ["_____", ".____", "..___", "...__", "...._",
@@ -15,6 +15,8 @@ var morse_nums = ["_____", ".____", "..___", "...__", "...._",
 
 
 func codificar(string, ftype):
+	string = string.to_lower()
+	
 	if ftype == 'reverso' or ftype == 'morse':
 		return funcref(self, ftype).call_func(string)
 	
@@ -24,24 +26,24 @@ func codificar(string, ftype):
 			s = funcref(self, ftype).call_func(c, s)
 		elif c.is_valid_integer():
 			if int(c) < 5:
-				s += str(int(c)+5)
-			else:
 				s += str(9-int(c))
+			else:
+				s += str(int(c)-5)
 		else:
 			s += c
-	print(s)
+	print_debug(s)
 	return s
 
-func cesar(c, s):
+func cesar3(c, s):
 	s += alphabet[(3+alphabet.find(c)) % 26]
+	return s
+
+func cesar7(c, s):
+	s += alphabet[(7+alphabet.find(c)) % 26]
 	return s
 
 func atbash(c, s):
 	s += alphabet[25-alphabet.find(c)]
-	return s
-
-func rot13(c, s):
-	s += alphabet[(13+alphabet.find(c)) % 26]
 	return s
 
 func reverso(string):
@@ -69,10 +71,10 @@ func morse(string):
 	for c in string:
 		if c == ' ':
 			s += "/"
-		elif s in alphabet:
-			s += morse[alphabet.find(c)] + " "
-		elif s.is_valid_integer():
+		elif c in alphabet:
+			s += morses[alphabet.find(c)] + " "
+		elif c.is_valid_integer():
 			s += morse_nums[int(c)] + " "
 		else:
-			s += c
+			s += c + " "
 	return s
