@@ -1,20 +1,43 @@
-extends ColorRect
+extends Control
 
 export(PackedScene) var pedido
-var pedido_count = 0
+var revelado_count = 0
 
 signal pedido_acessado
 
-func novo_pedido(nome, cripto, texto):
+func _process(delta):
+	for i in range(min(revelado_count, get_child_count())):
+		get_child(i).margin_top = 0.9*get_child(i).margin_top + 0.1*(11 + 55*i)
+		get_child(i).margin_bottom = 0.9*get_child(i).margin_bottom + 0.1*(57 + 55*i)
+
+
+func limpar_pedidos():
+	revelado_count = 0
+	for child in get_children():
+		child.queue_free()
+
+
+func novo_pedido(nome, cripto, texto, prioridade = 0):
 	var new = pedido.instance()
-	new.setup(nome, cripto, texto)
+	new.setup(nome, cripto, texto, prioridade)
 	new.connect("pedido_acessado", self, "pedido_acessado")
 	
 	add_child(new)
 	new.margin_left = 8
-	new.margin_top = 11 + 55*pedido_count
-	new.margin_bottom = 57 + 55*pedido_count
-	pedido_count += 1
+	new.margin_top = 600
+	new.margin_bottom = 647
+	
+	var i = 0
+	for child in get_children():
+		if !child.has_method("get_prioridade") or prioridade < child.get_prioridade():
+			i += 1
+			continue
+		move_child(new, i)
+		break
+
+
+func revelar_pedido():
+	revelado_count += 1
 
 
 func pedido_acessado(cripto, texto):

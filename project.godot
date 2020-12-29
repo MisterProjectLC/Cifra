@@ -19,6 +19,10 @@ config/name="Cifra"
 run/main_scene="res://scenes/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Parser="*res://scenes/Parser.gd"
+
 [display]
 
 window/size/width=1000

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Retangulo.tscn" type="PackedScene" id=2]
@@ -14,9 +14,19 @@
 [ext_resource path="res://scenes/Pedidos.gd" type="Script" id=12]
 [ext_resource path="res://scenes/Timeline.gd" type="Script" id=13]
 [ext_resource path="res://scenes/Personagens/Shelberg.gd" type="Script" id=14]
+[ext_resource path="res://scenes/Personagens/Weinstein.gd" type="Script" id=15]
+[ext_resource path="res://scenes/Personagens/Hop.gd" type="Script" id=16]
+[ext_resource path="res://scenes/Personagens/Laurson.gd" type="Script" id=17]
+[ext_resource path="res://scenes/Personagens/Mish.gd" type="Script" id=18]
+[ext_resource path="res://scenes/Personagens/Bardon.gd" type="Script" id=19]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
 use_filter = true
 font_data = ExtResource( 3 )
 
@@ -29,6 +39,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="NovaMensagem" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Turno" type="Timer" parent="."]
+wait_time = 180.0
+autostart = true
+
 [node name="Codificador" type="Node" parent="."]
 script = ExtResource( 9 )
 
@@ -37,8 +58,35 @@ script = ExtResource( 13 )
 
 [node name="Personagens" type="Node" parent="."]
 
+[node name="Hop" type="Node" parent="Personagens"]
+script = ExtResource( 16 )
+nome = "Hop"
+criptografia = "cesar3"
+
+[node name="Weinstein" type="Node" parent="Personagens"]
+script = ExtResource( 15 )
+nome = "Weinstein, Toulann"
+criptografia = "polybius"
+
 [node name="Shelberg" type="Node" parent="Personagens"]
 script = ExtResource( 14 )
+nome = "Shelberg, Arnheim"
+criptografia = "reverso"
+
+[node name="Mish" type="Node" parent="Personagens"]
+script = ExtResource( 18 )
+nome = "Mish, Kleinhorst"
+criptografia = "cesar7"
+
+[node name="Bardon" type="Node" parent="Personagens"]
+script = ExtResource( 19 )
+nome = "Bardon, Flarsink"
+criptografia = "atbash"
+
+[node name="Laurson" type="Node" parent="Personagens"]
+script = ExtResource( 17 )
+nome = "Laurson"
+criptografia = "morse"
 
 [node name="Fundo" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -52,7 +100,6 @@ __meta__ = {
 }
 
 [node name="Recebimento" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 5 )
@@ -62,18 +109,22 @@ __meta__ = {
 }
 
 [node name="Pedidos" parent="Recebimento" instance=ExtResource( 2 )]
-margin_left = -456.0
+margin_left = -464.0
 margin_top = -280.0
-margin_right = -112.0
+margin_right = -120.0
 margin_bottom = 278.0
 color = Color( 0.541176, 0.435294, 0.337255, 1 )
+
+[node name="PedidosManager" type="Control" parent="Recebimento/Pedidos"]
+margin_right = 40.0
+margin_bottom = 40.0
 script = ExtResource( 12 )
 pedido = ExtResource( 10 )
 
 [node name="Legenda" parent="Recebimento" instance=ExtResource( 2 )]
-margin_left = -456.0
+margin_left = -464.0
 margin_top = 238.0
-margin_right = -112.0
+margin_right = -120.0
 margin_bottom = 278.0
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
 
@@ -92,16 +143,16 @@ __meta__ = {
 }
 
 [node name="Mensagem" parent="Recebimento" instance=ExtResource( 2 )]
-margin_left = -81.0
+margin_left = -96.0
 margin_top = -281.0
 margin_right = 460.0
 margin_bottom = -71.0
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
 
 [node name="Label" type="Label" parent="Recebimento/Mensagem"]
-margin_left = 15.0
+margin_left = 13.0
 margin_top = 11.0
-margin_right = 527.0
+margin_right = 536.0
 margin_bottom = 198.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -109,11 +160,12 @@ custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 autowrap = true
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="TabelaCifra" parent="Recebimento" instance=ExtResource( 2 )]
-margin_left = -81.0
+margin_left = -96.0
 margin_top = -79.0
 margin_right = 460.0
 margin_bottom = 137.0
@@ -239,6 +291,7 @@ __meta__ = {
 }
 
 [node name="Envio" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -247,9 +300,9 @@ __meta__ = {
 }
 
 [node name="Bases" parent="Envio" instance=ExtResource( 2 )]
-margin_left = -456.0
+margin_left = -464.0
 margin_top = -280.0
-margin_right = -112.0
+margin_right = -120.0
 margin_bottom = 37.0
 color = Color( 0.541176, 0.435294, 0.337255, 1 )
 
@@ -279,14 +332,14 @@ margin_bottom = 267.328
 nome = "Bardon"
 local = "Flarsink"
 
-[node name="Legenda" parent="Envio" instance=ExtResource( 2 )]
-margin_left = -456.181
-margin_top = -1.87408
-margin_right = -112.181
-margin_bottom = 38.1259
+[node name="Legenda" parent="Envio/Bases" instance=ExtResource( 2 )]
+margin_left = -172.181
+margin_top = 119.626
+margin_right = 171.819
+margin_bottom = 159.626
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
 
-[node name="Label" type="Label" parent="Envio/Legenda"]
+[node name="Label" type="Label" parent="Envio/Bases/Legenda"]
 margin_left = 9.09747
 margin_top = -0.507568
 margin_right = 334.097
@@ -301,9 +354,9 @@ __meta__ = {
 }
 
 [node name="Estoque" parent="Envio" instance=ExtResource( 2 )]
-margin_left = -456.0
+margin_left = -464.0
 margin_top = 50.0
-margin_right = -112.0
+margin_right = -120.0
 margin_bottom = 276.0
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
 
@@ -326,9 +379,9 @@ __meta__ = {
 }
 
 [node name="Painel" parent="Envio" instance=ExtResource( 2 )]
-margin_left = -81.0
+margin_left = -94.0
 margin_top = -281.0
-margin_right = 441.0
+margin_right = 459.0
 margin_bottom = 203.0
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
 
@@ -445,7 +498,31 @@ script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pedido_acessado" from="Recebimento/Pedidos" to="." method="pedido_acessado"]
+
+[node name="Semana" type="Label" parent="FadeIn"]
+margin_left = 349.718
+margin_top = 197.482
+margin_right = 674.718
+margin_bottom = 261.482
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 2 )
+text = "Semana 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="NovaMensagem" to="." method="_on_NovaMensagem_timeout"]
+[connection signal="timeout" from="Turno" to="." method="_on_Turno_timeout"]
+[connection signal="enviar_pedido" from="Personagens/Hop" to="." method="novo_pedido"]
+[connection signal="enviar_pedido" from="Personagens/Weinstein" to="." method="novo_pedido"]
+[connection signal="enviar_pedido" from="Personagens/Shelberg" to="." method="novo_pedido"]
+[connection signal="enviar_pedido" from="Personagens/Mish" to="." method="novo_pedido"]
+[connection signal="enviar_pedido" from="Personagens/Bardon" to="." method="novo_pedido"]
+[connection signal="enviar_pedido" from="Personagens/Laurson" to="." method="novo_pedido"]
+[connection signal="pedido_acessado" from="Recebimento/Pedidos/PedidosManager" to="." method="pedido_acessado"]
 [connection signal="button_up" from="Recebimento/LeftCifra" to="Recebimento" method="_on_LeftCifra_button_up"]
 [connection signal="button_up" from="Recebimento/RightCifra" to="Recebimento" method="_on_RightCifra_button_up"]
 [connection signal="base_examined" from="Envio/Bases/Weinstein" to="." method="base_examined"]

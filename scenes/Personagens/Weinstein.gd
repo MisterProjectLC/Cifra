@@ -3,7 +3,7 @@ extends "Soldado.gd"
 func passar_turno():
 	.passar_turno()
 	
-	enviar_pedido("Estamos quase vencendo! Envie mais tropas!", 2)
+	enviar_pedido("Eu nao sei se posso continuar...", 0)
 
 
 # default response

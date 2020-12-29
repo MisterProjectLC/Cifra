@@ -31,7 +31,6 @@ func codificar(string, ftype):
 				s += str(int(c)-5)
 		else:
 			s += c
-	print_debug(s)
 	return s
 
 func cesar3(c, s):
@@ -50,13 +49,11 @@ func reverso(string):
 	var s = ""
 	var word = ""
 	for c in string:
-		if c == ' ':
-			s += word + " "
-			word = ""
-		elif c in alphabet or c.is_valid_integer():
-			word += c
-		else:
+		if c in alphabet or c.is_valid_integer():
 			word = word.insert(0, c)
+		else:
+			s += word + c
+			word = ""
 	return s
 
 func polybius(c, s):
@@ -70,7 +67,7 @@ func morse(string):
 	var s = ""
 	for c in string:
 		if c == ' ':
-			s += "/"
+			s += "/ "
 		elif c in alphabet:
 			s += morses[alphabet.find(c)] + " "
 		elif c.is_valid_integer():

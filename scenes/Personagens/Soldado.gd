@@ -2,6 +2,7 @@ extends "Personagem.gd"
 
 export var suprimentos = 10
 export var companhias = 5
+export var supr_tabela = [0, 2, 3, 5]
 
 var existente = true
 var flanqueado = false
@@ -38,9 +39,9 @@ func passar_turno():
 		existente = false
 
 
-func enviar_pedido(texto):
+func enviar_pedido(texto, prioridade = 0):
 	if existente:
-		.enviar_pedido(texto)
+		.enviar_pedido(texto, prioridade)
 
 
 func receive_suprimentos(new):
@@ -54,3 +55,12 @@ func receive_companhias(new):
 # default response
 func receive_message(message):
 	ordem = message
+
+func get_progresso():
+	return progresso
+
+func recolher_suprimento():
+	if progresso < 0:
+		return supr_tabela[0]
+	else:
+		return supr_tabela[progresso+1]

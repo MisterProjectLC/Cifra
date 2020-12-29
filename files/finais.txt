@@ -1,0 +1,5 @@
+Nada foi feito.
+Você venceu.
+#
+Tudo foi feito.
+Você perdeu.

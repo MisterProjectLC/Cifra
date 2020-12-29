@@ -13,5 +13,5 @@ func _ready():
 func passar_turno():
 	pass
 
-func enviar_pedido(texto):
-	emit_signal("enviar_pedido", nome, criptografia, texto)
+func enviar_pedido(texto, prioridade = 0):
+	emit_signal("enviar_pedido", nome, criptografia, texto, prioridade)
