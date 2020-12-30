@@ -1,27 +1,34 @@
 extends Control
 
 var nome_atual = ""
+var criptografia_atual = "cesar3"
 var suprimentos = 0
 var max_suprimentos = 0
 var companhias = 0
 var max_companhias = 0
 
 var mensagens = ["Nulo", "Atacar", "Recuar", "Saquear", "Interrogação"]
-var mensagem_textos = ["...", "Avance contra as tropas inimigas.", 
-						"Recue para uma posição segura.",
-						"Faça ataques controlados para roubar suprimentos.",
-						"Reporte para o Sr. Laurson.\n[Acusar de ser o Traidor.]"]
+var mensagem_textos = ["...", "Avance contra o inimigo.", 
+						"Recue para uma posicao segura.",
+						"Roube suprimentos.",
+						"Reporte para o Sr. Laurson."]
+var explicacao = ["", "[Perde soldados, progresso na guerra.]", 
+						"[Evita perdas, perde progresso na guerra.]",
+						"[Perde soldados, mas base não precisa de recursos este turno.]",
+						"[Acusar de ser o Traidor.]"]
 var msg_atual = 0
 
-signal envio
+signal envio_mensagem
+signal envio_recursos
 
 func _ready():
 	atualizar_mensagem(0)
 
 
-func base_examined(nome, local):
+func base_examined(nome, local, cripto):
 	$Titulo.text = (nome + ", " + local).to_upper()
 	nome_atual = nome
+	criptografia_atual = cripto
 	atualizar_dados(0, 0)
 	atualizar_mensagem(0)
 
@@ -34,8 +41,8 @@ func atualizar_maximo(estoque_supr, estoque_comp):
 func atualizar_mensagem(msg):
 	msg_atual = msg
 	$NomeMsg.text = mensagens[msg]
-	$TextoMsg/Label.text = mensagem_textos[msg]
-
+	$TextoMsg/Texto.text = Codificador.codificar(mensagem_textos[msg], criptografia_atual)
+	$TextoMsg/Explicacao.text = explicacao[msg]
 
 func atualizar_dados(new_r, new_d):
 	if 0 <= new_r and new_r <= max_suprimentos:
@@ -75,6 +82,10 @@ func _on_MaisDestac_button_up():
 	atualizar_dados(suprimentos, companhias+1)
 
 # Enviar
-func _on_Enviar_button_up():
-	emit_signal("envio", nome_atual, suprimentos, companhias, msg_atual)
+func _on_EnviarRecursos_button_up():
+	emit_signal("envio_recursos", nome_atual, suprimentos, companhias)
 	atualizar_dados(0, 0)
+
+func _on_EnviarMensagem_button_up():
+	emit_signal("envio_mensagem", nome_atual, msg_atual)
+	atualizar_mensagem(0)

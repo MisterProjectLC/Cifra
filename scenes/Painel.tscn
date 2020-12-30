@@ -30,43 +30,40 @@ __meta__ = {
 }
 
 [node name="Titulo" type="Label" parent="."]
-margin_left = 17.0
-margin_top = 9.21606
-margin_right = 508.0
-margin_bottom = 66.2161
+margin_left = 18.084
+margin_top = 8.11695
+margin_right = 509.084
+margin_bottom = 65.117
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "WILHELM, KLEINBURG"
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Enviando" type="Label" parent="."]
-margin_left = 19.2161
-margin_top = 64.8019
-margin_right = 344.216
-margin_bottom = 103.802
+[node name="Recursos" type="Label" parent="."]
+margin_left = 19.0589
+margin_top = 66.4341
+margin_right = 344.059
+margin_bottom = 105.434
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Enviando..."
+text = "Recursos:"
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="MenosRacao" type="Button" parent="."]
-margin_left = 20.5695
-margin_top = 107.106
-margin_right = 50.5695
-margin_bottom = 143.106
+margin_left = 20.4123
+margin_top = 108.738
+margin_right = 50.4123
+margin_bottom = 144.738
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -93,13 +90,12 @@ __meta__ = {
 }
 
 [node name="MaisRacao" type="Button" parent="."]
-margin_left = 55.5918
-margin_top = 107.461
-margin_right = 85.5918
-margin_bottom = 143.461
+margin_left = 55.4346
+margin_top = 109.093
+margin_right = 85.4346
+margin_bottom = 145.093
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -126,13 +122,12 @@ __meta__ = {
 }
 
 [node name="MenosDestac" type="Button" parent="."]
-margin_left = 20.6716
-margin_top = 148.5
-margin_right = 50.6716
-margin_bottom = 184.5
+margin_left = 20.5144
+margin_top = 150.132
+margin_right = 50.5144
+margin_bottom = 186.132
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -159,13 +154,12 @@ __meta__ = {
 }
 
 [node name="MaisDestac" type="Button" parent="."]
-margin_left = 56.0099
-margin_top = 148.855
-margin_right = 86.0099
-margin_bottom = 184.855
+margin_left = 55.8527
+margin_top = 150.487
+margin_right = 85.8527
+margin_bottom = 186.487
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -192,10 +186,10 @@ __meta__ = {
 }
 
 [node name="Dados" type="Label" parent="."]
-margin_left = 96.2139
-margin_top = 107.18
-margin_right = 421.214
-margin_bottom = 188.18
+margin_left = 96.0567
+margin_top = 108.812
+margin_right = 421.057
+margin_bottom = 189.812
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 3 )
@@ -203,18 +197,62 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0x Suprimentos
 0x Companhias"
 __meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnviarRecursos" type="Button" parent="."]
+margin_left = 18.2328
+margin_top = 204.259
+margin_right = 152.233
+margin_bottom = 251.259
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="EnviarRecursos"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -161.0
+margin_top = -18.9117
+margin_right = 160.0
+margin_bottom = 15.0883
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.541176, 0.545098, 0.564706, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "ENVIAR"
+align = 1
+valign = 1
+__meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
+[node name="Mensagem" type="Label" parent="."]
+margin_left = 17.4565
+margin_top = 275.284
+margin_right = 342.456
+margin_bottom = 314.284
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Mensagem:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AntMensagem" type="Button" parent="."]
-margin_left = 21.2704
-margin_top = 222.744
-margin_right = 51.2704
-margin_bottom = 258.744
+margin_left = 23.2185
+margin_top = 314.186
+margin_right = 53.2185
+margin_bottom = 350.186
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -241,13 +279,12 @@ __meta__ = {
 }
 
 [node name="ProxMensagem" type="Button" parent="."]
-margin_left = 56.6087
-margin_top = 223.098
-margin_right = 86.6087
-margin_bottom = 259.098
+margin_left = 58.5568
+margin_top = 314.54
+margin_right = 88.5568
+margin_bottom = 350.54
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -273,33 +310,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Mensagem" type="Label" parent="."]
-margin_left = 15.5084
-margin_top = 183.842
-margin_right = 340.508
-margin_bottom = 222.842
-grow_horizontal = 2
-grow_vertical = 2
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Mensagem:"
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
 [node name="NomeMsg" type="Label" parent="."]
-margin_left = 103.955
-margin_top = 223.787
-margin_right = 428.955
-margin_bottom = 259.787
+margin_left = 105.903
+margin_top = 315.229
+margin_right = 430.903
+margin_bottom = 351.229
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Atacar"
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -308,17 +329,17 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 20.3128
-margin_top = 268.677
-margin_right = 493.313
-margin_bottom = 409.678
+margin_left = 22.0
+margin_top = 361.538
+margin_right = 523.0
+margin_bottom = 529.538
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
 
-[node name="Label" type="Label" parent="TextoMsg"]
-margin_left = 14.0
-margin_top = 9.0
-margin_right = 457.0
-margin_bottom = 136.0
+[node name="Texto" type="Label" parent="TextoMsg"]
+margin_left = 10.5705
+margin_top = 6.42783
+margin_right = 487.57
+margin_bottom = 81.4278
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 3 )
@@ -327,21 +348,38 @@ text = "Avance contra as tropas
 inimigas."
 autowrap = true
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Enviar" type="Button" parent="."]
-margin_left = 22.0
-margin_top = 423.0
-margin_right = 156.0
-margin_bottom = 470.0
+[node name="Explicacao" type="Label" parent="TextoMsg"]
+margin_left = 14.0
+margin_top = 83.8557
+margin_right = 491.0
+margin_bottom = 158.856
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Avance contra as tropas
+inimigas."
+autowrap = true
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Enviar"]
+[node name="EnviarMensagem" type="Button" parent="."]
+margin_left = 25.2404
+margin_top = 544.33
+margin_right = 159.24
+margin_bottom = 591.33
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="EnviarMensagem"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -366,6 +404,7 @@ __meta__ = {
 [connection signal="button_up" from="MaisRacao" to="." method="_on_MaisRacao_button_up"]
 [connection signal="button_up" from="MenosDestac" to="." method="_on_MenosDestac_button_up"]
 [connection signal="button_up" from="MaisDestac" to="." method="_on_MaisDestac_button_up"]
+[connection signal="button_up" from="EnviarRecursos" to="." method="_on_EnviarRecursos_button_up"]
 [connection signal="button_up" from="AntMensagem" to="." method="_on_AntMensagem_button_up"]
 [connection signal="button_up" from="ProxMensagem" to="." method="_on_ProxMensagem_button_up"]
-[connection signal="button_up" from="Enviar" to="." method="_on_Enviar_button_up"]
+[connection signal="button_up" from="EnviarMensagem" to="." method="_on_EnviarMensagem_button_up"]

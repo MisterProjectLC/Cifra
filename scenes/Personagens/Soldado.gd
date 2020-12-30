@@ -9,10 +9,16 @@ var flanqueado = false
 var progresso = 0
 var ordem = ""
 
-func passar_turno():
+signal enviar_criptografia
+
+func _ready():
+	emit_signal("enviar_criptografia", criptografia)
+
+
+func passar_turno(turno):
 	if !existente:
 		return
-	.passar_turno()
+	.passar_turno(turno)
 	
 	# Racao
 	if ordem != "saquear":
@@ -39,9 +45,9 @@ func passar_turno():
 		existente = false
 
 
-func enviar_pedido(texto, prioridade = 0):
+func enviar_pedido(texto, prioridade = 0, cifra = criptografia):
 	if existente:
-		.enviar_pedido(texto, prioridade)
+		.enviar_pedido(texto, prioridade, cifra)
 
 
 func receive_suprimentos(new):

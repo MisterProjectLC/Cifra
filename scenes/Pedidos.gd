@@ -5,7 +5,7 @@ var revelado_count = 0
 
 signal pedido_acessado
 
-func _process(delta):
+func _process(_delta):
 	for i in range(min(revelado_count, get_child_count())):
 		get_child(i).margin_top = 0.9*get_child(i).margin_top + 0.1*(11 + 55*i)
 		get_child(i).margin_bottom = 0.9*get_child(i).margin_bottom + 0.1*(57 + 55*i)
@@ -24,8 +24,8 @@ func novo_pedido(nome, cripto, texto, prioridade = 0):
 	
 	add_child(new)
 	new.margin_left = 8
-	new.margin_top = 600
-	new.margin_bottom = 647
+	new.margin_top = 800
+	new.margin_bottom = 847
 	
 	var i = 0
 	for child in get_children():

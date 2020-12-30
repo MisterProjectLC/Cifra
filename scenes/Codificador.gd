@@ -15,15 +15,20 @@ var morse_nums = ["_____", ".____", "..___", "...__", "...._",
 
 
 func codificar(string, ftype):
+	if ftype == "nada":
+		return string
+	
 	string = string.to_lower()
 	
-	if ftype == 'reverso' or ftype == 'morse':
+	if ftype == "reverso" or ftype == "morse":
 		return funcref(self, ftype).call_func(string)
 	
 	var s = ""
 	for c in string:
 		if c in alphabet:
 			s = funcref(self, ftype).call_func(c, s)
+		elif c.to_lower() in alphabet:
+			s = funcref(self, ftype).call_func(c.to_lower(), s, true)
 		elif c.is_valid_integer():
 			if int(c) < 5:
 				s += str(9-int(c))
@@ -33,16 +38,25 @@ func codificar(string, ftype):
 			s += c
 	return s
 
-func cesar3(c, s):
-	s += alphabet[(3+alphabet.find(c)) % 26]
+func cesar3(c, s, caps = false):
+	if caps:
+		s += alphabet[(3+alphabet.find(c)) % 26].to_lower()
+	else:
+		s += alphabet[(3+alphabet.find(c)) % 26]
 	return s
 
-func cesar7(c, s):
-	s += alphabet[(7+alphabet.find(c)) % 26]
+func cesar7(c, s, caps = false):
+	if caps:
+		s += alphabet[(7+alphabet.find(c)) % 26].to_lower()
+	else:
+		s += alphabet[(7+alphabet.find(c)) % 26]
 	return s
 
-func atbash(c, s):
-	s += alphabet[25-alphabet.find(c)]
+func atbash(c, s, caps = false):
+	if caps:
+		s += alphabet[25-alphabet.find(c)].to_lower()
+	else:
+		s += alphabet[25-alphabet.find(c)]
 	return s
 
 func reverso(string):
@@ -56,8 +70,8 @@ func reverso(string):
 			word = ""
 	return s
 
-func polybius(c, s):
-	if c == 'z':
+func polybius(c, s, _caps = false):
+	if c == 'z' or c == 'Z':
 		s += 'ee'
 	else:
 		s += alphabet[alphabet.find(c)%5] + alphabet[alphabet.find(c)/5]
@@ -70,6 +84,8 @@ func morse(string):
 			s += "/ "
 		elif c in alphabet:
 			s += morses[alphabet.find(c)] + " "
+		elif c.to_lower() in alphabet:
+			s += morses[alphabet.find(c.to_lower())] + " "
 		elif c.is_valid_integer():
 			s += morse_nums[int(c)] + " "
 		else:

@@ -1,0 +1,6 @@
+General Hop falando. Soldado, sei que não há muito tempo, então serei breve: estas serão as únicas mensagens descriptografadas que enviarei. Depois, terá de decifrar minha criptografia.
+Sua máquina possui dois modos: Receber e Enviar. Com Receber, você descriptografa as mensagens de nossos aliados. Com Enviar, você redireciona recursos para acampamentos ou envia ordens criptografadas.
+No modo de Recebimento, você pode mudar a tabela de descriptografia com as setas. Cada soldado tem sua própria criptografia, então tenha certeza de estar usando a tabela certa.
+Sobre o Modo Envio, você é responsável por gerenciar os recursos e ordens para mim. Comandantes podem pedir por suprimentos, ou eu posso enviar ordens. É seu trabalho cuidar de tudo isso.
+Tudo certo? Bem! Alguns dias atrás, nosso espião, Laurson, roubou uma mensagem de ataque criptografada do inimigo. Ele irá enviá-la para você. Veja se consegue descriptografá-la e avisar a base para recuar.
+Por essa semana, é isso. Seu trabalho começa efetivamente semana que vem. Até lá, soldado.

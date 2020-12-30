@@ -2,16 +2,17 @@ extends Node
 
 export var nome = "Weinstein"
 export var criptografia = "cesar"
+var turno = 0
 
 signal enviar_pedido
 
-# Called when the node enters the scene tree for the first time.
+var messages
 func _ready():
-	pass # Replace with function body.
+	messages = Parser.load_file(nome) 
 
 # override
-func passar_turno():
+func passar_turno(_turno):
 	pass
 
-func enviar_pedido(texto, prioridade = 0):
-	emit_signal("enviar_pedido", nome, criptografia, texto, prioridade)
+func enviar_pedido(texto, prioridade = 0, cripto = criptografia):
+	emit_signal("enviar_pedido", nome, cripto, texto, prioridade)
