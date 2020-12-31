@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Retangulo.tscn" type="PackedScene" id=2]
@@ -12,7 +12,7 @@
 [ext_resource path="res://scenes/Pedido.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/FadeIn.gd" type="Script" id=11]
 [ext_resource path="res://scenes/Pedidos.gd" type="Script" id=12]
-[ext_resource path="res://scenes/Timeline.gd" type="Script" id=13]
+[ext_resource path="res://scenes/Personagens/Goller.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/Personagens/Shelberg.gd" type="Script" id=14]
 [ext_resource path="res://scenes/Personagens/Weinstein.gd" type="Script" id=15]
 [ext_resource path="res://scenes/Personagens/Hop.gd" type="Script" id=16]
@@ -22,12 +22,17 @@
 [ext_resource path="res://assets/Icone2.png" type="Texture" id=20]
 [ext_resource path="res://scenes/Menu.gd" type="Script" id=21]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
+size = 28
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
 size = 60
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("CloseLeft:rect_position")
@@ -54,18 +59,17 @@ tracks/1/keys = {
 "values": [ Vector2( 1112.84, 1 ), Vector2( 595, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 50
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 40
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=9]
-resource_name = "FadeIn"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
 tracks/0/interp = 1
@@ -80,34 +84,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=7]
-resource_name = "Semana"
-length = 2.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("Semana:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.5, 1, 1.5, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 1.5, 2.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=8]
 length = 8.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Texto:modulate")
@@ -136,13 +112,39 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="Animation" id=8]
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Titulo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 1, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=9]
 size = 90
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "MenuFadeIn"
+[sub_resource type="Animation" id=10]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("FadeIn:color")
@@ -161,6 +163,7 @@ tracks/0/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -180,6 +183,8 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+delta_comp = 4
+goller = ExtResource( 13 )
 
 [node name="Timer" type="Timer" parent="Main"]
 
@@ -189,40 +194,43 @@ wait_time = 60.0
 [node name="Turno" type="Timer" parent="Main"]
 wait_time = 240.0
 
-[node name="Timeline" type="Node" parent="Main"]
-script = ExtResource( 13 )
-
 [node name="Personagens" type="Node" parent="Main"]
 
 [node name="Hop" type="Node" parent="Main/Personagens"]
 script = ExtResource( 16 )
 nome = "General Hop"
-criptografia = "cesar3"
 
 [node name="Weinstein" type="Node" parent="Main/Personagens"]
 script = ExtResource( 15 )
-nome = "Weinstein, Toulann"
-criptografia = "polybius"
+criptografia = "reverso"
+base = NodePath("../../Envio/Bases/Lonpris")
+local = " Lonpris"
 
 [node name="Shelberg" type="Node" parent="Main/Personagens"]
 script = ExtResource( 14 )
-nome = "Shelberg, Arnheim"
-criptografia = "reverso"
+nome = "Shelberg"
+criptografia = "polybius"
+base = NodePath("../../Envio/Bases/Arnheim")
+local = "Arnheim"
 
 [node name="Mish" type="Node" parent="Main/Personagens"]
 script = ExtResource( 18 )
-nome = "Mish, Enderberg"
+nome = "Mish"
 criptografia = "cesar7"
+base = NodePath("../../Envio/Bases/Endesburg")
 
 [node name="Bardon" type="Node" parent="Main/Personagens"]
 script = ExtResource( 19 )
-nome = "Bardon, Flarsink"
+nome = "Bardon"
 criptografia = "atbash"
+base = NodePath("../../Envio/Bases/Sungarden")
+local = "Sungarden"
 
 [node name="Laurson" type="Node" parent="Main/Personagens"]
 script = ExtResource( 17 )
 nome = "Ken Laurson"
 criptografia = "morse"
+base = NodePath("../../Envio/Bases/Laurson")
 
 [node name="Recebimento" type="Control" parent="Main"]
 anchor_right = 1.0
@@ -235,7 +243,7 @@ __meta__ = {
 
 [node name="Pedidos" parent="Main/Recebimento" instance=ExtResource( 2 )]
 margin_left = -466.0
-margin_top = -335.0
+margin_top = -356.0
 margin_right = -122.0
 margin_bottom = 334.0
 color = Color( 0.541176, 0.435294, 0.337255, 1 )
@@ -269,7 +277,7 @@ __meta__ = {
 
 [node name="Mensagem" parent="Main/Recebimento" instance=ExtResource( 2 )]
 margin_left = -94.0
-margin_top = -336.0
+margin_top = -356.0
 margin_right = 462.0
 margin_bottom = -18.0
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
@@ -277,15 +285,14 @@ color = Color( 0.988235, 0.909804, 0.772549, 1 )
 [node name="Label" type="Label" parent="Main/Recebimento/Mensagem"]
 margin_left = 13.0
 margin_top = 11.0
-margin_right = 539.0
-margin_bottom = 306.0
+margin_right = 543.0
+margin_bottom = 328.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 autowrap = true
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -341,7 +348,7 @@ margin_right = 39.1614
 margin_bottom = 36.1406
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.541176, 0.545098, 0.564706, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "<"
@@ -405,7 +412,7 @@ margin_right = 39.1614
 margin_bottom = 36.1406
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.541176, 0.545098, 0.564706, 1 )
 text = ">"
 align = 1
@@ -431,37 +438,36 @@ margin_right = -122.0
 margin_bottom = -24.0
 color = Color( 0.541176, 0.435294, 0.337255, 1 )
 
-[node name="Weinstein" parent="Main/Envio/Bases" instance=ExtResource( 8 )]
-nome = "Weinstein"
-local = "Toulann"
+[node name="Lonpris" parent="Main/Envio/Bases" instance=ExtResource( 8 )]
 
-[node name="Shelberg" parent="Main/Envio/Bases" instance=ExtResource( 8 )]
-margin_top = 81.8621
-margin_bottom = 128.862
-nome = "Shelberg"
-local = "Arnheim"
+[node name="Arnheim" parent="Main/Envio/Bases" instance=ExtResource( 8 )]
+margin_top = 66.3496
+margin_bottom = 113.349
 
-[node name="Mish" parent="Main/Envio/Bases" instance=ExtResource( 8 )]
+[node name="Endesburg" parent="Main/Envio/Bases" instance=ExtResource( 8 )]
 margin_left = 8.81451
-margin_top = 150.675
+margin_top = 120.758
 margin_right = 332.815
-margin_bottom = 197.675
-nome = "Mish"
-local = "Kleinhorst"
+margin_bottom = 167.758
 
-[node name="Bardon" parent="Main/Envio/Bases" instance=ExtResource( 8 )]
+[node name="Sungarden" parent="Main/Envio/Bases" instance=ExtResource( 8 )]
 margin_left = 8.81451
-margin_top = 220.328
+margin_top = 176.007
 margin_right = 332.815
-margin_bottom = 267.328
-nome = "Bardon"
-local = "Flarsink"
+margin_bottom = 223.007
+
+[node name="Laurson" parent="Main/Envio/Bases" instance=ExtResource( 8 )]
+visible = false
+margin_left = 8.81451
+margin_top = 231.408
+margin_right = 332.815
+margin_bottom = 278.408
 
 [node name="Legenda" parent="Main/Envio/Bases" instance=ExtResource( 2 )]
 margin_left = -171.0
-margin_top = 123.65
+margin_top = 132.514
 margin_right = 171.0
-margin_bottom = 163.65
+margin_bottom = 172.514
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
 
 [node name="Label" type="Label" parent="Main/Envio/Bases/Legenda"]
@@ -574,6 +580,43 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "15:03"
 valign = 1
 __meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Encerrar" type="Button" parent="Main"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 91.0
+margin_top = 349.146
+margin_right = 272.0
+margin_bottom = 381.146
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Main/Encerrar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -38.6228
+margin_top = -40.8594
+margin_right = 39.1614
+margin_bottom = 36.1406
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.541176, 0.545098, 0.564706, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "ENCERRAR"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -784,7 +827,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Main"]
 pause_mode = 2
-anims/PauseMenu = SubResource( 4 )
+anims/PauseMenu = SubResource( 3 )
 
 [node name="FadeIn" type="ColorRect" parent="Main"]
 anchor_right = 1.0
@@ -797,7 +840,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Semana" type="Label" parent="Main/FadeIn"]
+[node name="Titulo" type="Label" parent="Main/FadeIn"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -809,7 +852,7 @@ margin_right = 286.051
 margin_bottom = 128.321
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 align = 1
 valign = 1
 autowrap = true
@@ -829,7 +872,7 @@ margin_right = 401.48
 margin_bottom = 176.884
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 align = 1
 autowrap = true
 __meta__ = {
@@ -837,9 +880,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Main/FadeIn"]
-anims/FadeIn = SubResource( 9 )
-anims/Semana = SubResource( 7 )
-anims/Texto = SubResource( 8 )
+anims/FadeIn = SubResource( 6 )
+anims/Texto = SubResource( 7 )
+anims/Titulo = SubResource( 8 )
 
 [node name="Menu" type="Control" parent="."]
 anchor_right = 1.0
@@ -851,10 +894,10 @@ __meta__ = {
 }
 
 [node name="Logo" parent="Menu" instance=ExtResource( 2 )]
-margin_left = -486.0
-margin_top = -331.0
-margin_right = -42.0
-margin_bottom = -174.0
+margin_left = -486.902
+margin_top = -342.733
+margin_right = -42.9025
+margin_bottom = -185.733
 mouse_filter = 2
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
 
@@ -865,11 +908,12 @@ margin_right = 368.948
 margin_bottom = 134.584
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Cifra"
 autowrap = true
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -882,12 +926,16 @@ margin_bottom = 525.346
 rect_scale = Vector2( 0.25, 0.25 )
 mouse_filter = 2
 texture = ExtResource( 20 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
 
 [node name="Panel" parent="Menu" instance=ExtResource( 2 )]
 margin_left = -484.0
 margin_top = -126.0
 margin_right = -43.0
-margin_bottom = 337.0
+margin_bottom = 340.0
 color = Color( 0.152941, 0.152941, 0.152941, 1 )
 
 [node name="Jogar" type="Button" parent="Menu/Panel"]
@@ -1008,7 +1056,7 @@ autostart = true
 
 [node name="Mensagens" parent="Menu" instance=ExtResource( 2 )]
 margin_left = -4.0
-margin_top = -330.0
+margin_top = -344.0
 margin_right = 492.0
 margin_bottom = 342.0
 mouse_filter = 2
@@ -1016,9 +1064,9 @@ color = Color( 0.988235, 0.909804, 0.772549, 1 )
 
 [node name="Label" type="Label" parent="Menu/Mensagens"]
 margin_left = 13.0
-margin_top = 11.0
+margin_top = 9.5125
 margin_right = 486.0
-margin_bottom = 349.0
+margin_bottom = 353.513
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
@@ -1032,7 +1080,7 @@ __meta__ = {
 margin_left = 13.0
 margin_top = 344.0
 margin_right = 487.0
-margin_bottom = 660.0
+margin_bottom = 676.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
@@ -1048,34 +1096,29 @@ anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 0 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Menu"]
-anims/MenuFadeIn = SubResource( 2 )
+anims/MenuFadeIn = SubResource( 10 )
 [connection signal="timeout" from="Main/Timer" to="Main" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Main/NovaMensagem" to="Main" method="_on_NovaMensagem_timeout"]
 [connection signal="timeout" from="Main/Turno" to="Main" method="_on_Turno_timeout"]
-[connection signal="enviar_pedido" from="Main/Personagens/Hop" to="Main" method="novo_pedido"]
-[connection signal="enviar_criptografia" from="Main/Personagens/Weinstein" to="Main/Envio/Bases/Weinstein" method="set_criptografia"]
-[connection signal="enviar_pedido" from="Main/Personagens/Weinstein" to="Main" method="novo_pedido"]
-[connection signal="enviar_criptografia" from="Main/Personagens/Shelberg" to="Main/Envio/Bases/Shelberg" method="set_criptografia"]
-[connection signal="enviar_pedido" from="Main/Personagens/Shelberg" to="Main" method="novo_pedido"]
-[connection signal="enviar_criptografia" from="Main/Personagens/Mish" to="Main/Envio/Bases/Mish" method="set_criptografia"]
-[connection signal="enviar_pedido" from="Main/Personagens/Mish" to="Main" method="novo_pedido"]
-[connection signal="enviar_criptografia" from="Main/Personagens/Bardon" to="Main/Envio/Bases/Bardon" method="set_criptografia"]
-[connection signal="enviar_pedido" from="Main/Personagens/Bardon" to="Main" method="novo_pedido"]
-[connection signal="enviar_pedido" from="Main/Personagens/Laurson" to="Main" method="novo_pedido"]
+[connection signal="add_opcao" from="Main/Personagens/Laurson" to="Main" method="add_option"]
+[connection signal="substituicao" from="Main/Personagens/Laurson" to="Main" method="spawn_goller"]
 [connection signal="pedido_acessado" from="Main/Recebimento/Pedidos/PedidosManager" to="Main" method="pedido_acessado"]
 [connection signal="button_up" from="Main/Recebimento/LeftCifra" to="Main/Recebimento" method="_on_LeftCifra_button_up"]
 [connection signal="button_up" from="Main/Recebimento/RightCifra" to="Main/Recebimento" method="_on_RightCifra_button_up"]
-[connection signal="base_examined" from="Main/Envio/Bases/Weinstein" to="Main/Envio/Painel/PainelTexto" method="base_examined"]
-[connection signal="base_examined" from="Main/Envio/Bases/Shelberg" to="Main/Envio/Painel/PainelTexto" method="base_examined"]
-[connection signal="base_examined" from="Main/Envio/Bases/Mish" to="Main/Envio/Painel/PainelTexto" method="base_examined"]
-[connection signal="base_examined" from="Main/Envio/Bases/Bardon" to="Main/Envio/Painel/PainelTexto" method="base_examined"]
+[connection signal="base_examined" from="Main/Envio/Bases/Lonpris" to="Main/Envio/Painel/PainelTexto" method="base_examined"]
+[connection signal="base_examined" from="Main/Envio/Bases/Arnheim" to="Main/Envio/Painel/PainelTexto" method="base_examined"]
+[connection signal="base_examined" from="Main/Envio/Bases/Endesburg" to="Main/Envio/Painel/PainelTexto" method="base_examined"]
+[connection signal="base_examined" from="Main/Envio/Bases/Sungarden" to="Main/Envio/Painel/PainelTexto" method="base_examined"]
+[connection signal="base_examined" from="Main/Envio/Bases/Laurson" to="Main/Envio/Painel/PainelTexto" method="base_examined"]
 [connection signal="envio_mensagem" from="Main/Envio/Painel/PainelTexto" to="Main" method="_on_PainelTexto_envio_mensagem"]
 [connection signal="envio_recursos" from="Main/Envio/Painel/PainelTexto" to="Main" method="_on_PainelTexto_envio_recursos"]
 [connection signal="button_up" from="Main/Troca" to="Main" method="_on_Troca_button_up"]
+[connection signal="button_up" from="Main/Encerrar" to="Main" method="_on_Encerrar_button_up"]
 [connection signal="button_up" from="Main/Pausar" to="Main" method="_on_Pausar_button_up"]
 [connection signal="button_up" from="Main/CloseLeft/Continuar" to="Main" method="_on_Continuar_button_up"]
 [connection signal="button_up" from="Main/CloseLeft/Menu" to="Main" method="_on_Menu_button_up"]

@@ -20,3 +20,8 @@ func relogio():
 	else:
 		$Label.text += ":"
 	$Label.text += str(minutos)
+
+
+func reset():
+	clock = 0
+	$Label.text = "10:00"

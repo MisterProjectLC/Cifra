@@ -1,72 +1,89 @@
 extends "Personagem.gd"
 
-export var suprimentos = 10
-export var companhias = 5
-export var supr_tabela = [0, 2, 3, 5]
+export var _suprimentos = 10
+export var _companhias = 5
+export var _supr_tabela = [0, 2, 3, 5]
 
-var existente = true
-var flanqueado = false
-var progresso = 0
-var ordem = ""
-
-signal enviar_criptografia
-
-func _ready():
-	emit_signal("enviar_criptografia", criptografia)
-
+export var local = "Endesberg"
+var _existente = true
+var _flanqueado = false
+var _progresso = 0
+var _ordem = ""
 
 func passar_turno(turno):
-	if !existente:
-		return
-	.passar_turno(turno)
+	if !_existente:
+		return false
 	
+	# Tomar Ações ---
+	tomar_acoes(turno)
+	
+	# Rodar turno básico ---
 	# Racao
-	if ordem != "saquear":
-		if suprimentos >= companhias:
-			suprimentos -= companhias
+	if _ordem != "Saquear":
+		if _suprimentos >= _companhias:
+			_suprimentos -= _companhias
 		else:
-			companhias = suprimentos
-			suprimentos = 0
+			_companhias = _suprimentos
+			_suprimentos = 0
 	
 	# Combate
-	if ordem == "recuar":
-		progresso -= 1
-	elif ordem == "atacar":
-		if companhias >= 5:
-			progresso += 1
-		companhias -= 3
-	elif ordem == "saquear":
-		companhias -= 2
+	if _ordem == "Recuar":
+		_progresso -= 1
+	elif _ordem == "Atacar":
+		if _companhias >= 5:
+			_progresso += 1
+		_companhias -= 3
+	elif _ordem == "Saquear":
+		_companhias -= 2
 	else:
-		companhias -= 1
+		_companhias -= 1
 	
 	# Resultado
-	if companhias <= 0:
-		existente = false
+	if _companhias <= 0:
+		_existente = false
+		return false
+	
+	# Enviar Mensagens ---
+	enviar_mensagens(turno)
+	
+	# Reset ---
+	_ordem = ""
+	return true
 
 
-func enviar_pedido(texto, prioridade = 0, cifra = criptografia):
-	if existente:
-		.enviar_pedido(texto, prioridade, cifra)
+func tomar_acoes(_turno):
+	pass
+
+
+func enviar_pedido(texto, prioridade = 0, cifra = criptografia, titulo = nome + ", " + local):
+	if _existente:
+		.enviar_pedido(texto, prioridade, cifra, titulo)
 
 
 func receive_suprimentos(new):
-	if !flanqueado:
-		suprimentos += new
+	if !_flanqueado or new < 0:
+		_suprimentos += new
 
 func receive_companhias(new):
-	if !flanqueado:
-		companhias += new
+	if !_flanqueado or new < 0:
+		_companhias += new
 
 # default response
 func receive_message(message):
-	ordem = message
+	_ordem = message
+
+# GETTERS -----------------------------------------
+func get_local():
+	return local
 
 func get_progresso():
-	return progresso
+	return _progresso
+
+func get_ordem():
+	return _ordem
 
 func recolher_suprimento():
-	if progresso < 0:
-		return supr_tabela[0]
+	if _progresso < 0:
+		return _supr_tabela[0]
 	else:
-		return supr_tabela[progresso+1]
+		return _supr_tabela[_progresso+1]

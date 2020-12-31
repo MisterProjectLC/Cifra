@@ -1,13 +1,7 @@
 extends "Soldado.gd"
 
-func passar_turno(turno):
-	.passar_turno(turno)
-	
+func enviar_mensagens(turno):
 	if turno >= 1:
-		if suprimentos < companhias:
-			enviar_pedido("Soldado, mais " + str(companhias-suprimentos) + " suprimentos!", 1)
-
-
-# default response
-func receive_message(message):
-	ordem = message
+		if _suprimentos < _companhias:
+			enviar_pedido(("Soldado, mais " + str(_companhias-_suprimentos) + 
+			" suprimentos!"), 1)

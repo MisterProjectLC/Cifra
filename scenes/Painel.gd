@@ -7,16 +7,21 @@ var max_suprimentos = 0
 var companhias = 0
 var max_companhias = 0
 
-var mensagens = ["Nulo", "Atacar", "Recuar", "Saquear", "Interrogação"]
+var mensagens = ["Nulo", "Atacar", "Recuar", "Saquear"]
 var mensagem_textos = ["...", "Avance contra o inimigo.", 
 						"Recue para uma posicao segura.",
 						"Roube suprimentos.",
-						"Reporte para o Sr. Laurson."]
+						"Fuja. Laurson te procura."]
 var explicacao = ["", "[Perde soldados, progresso na guerra.]", 
 						"[Evita perdas, perde progresso na guerra.]",
 						"[Perde soldados, mas base não precisa de recursos este turno.]",
-						"[Acusar de ser o Traidor.]"]
+						"[\"Eu sei que você é o traidor. Fuja. Laurson te procura.\"]"]
 var msg_atual = 0
+
+var suspeitos = ["Weinstein", "Shelberg", "Mish", "Bardon"]
+var texto_espiao = "Encontrei o Traidor."
+
+var opcoes = mensagens
 
 signal envio_mensagem
 signal envio_recursos
@@ -25,8 +30,23 @@ func _ready():
 	atualizar_mensagem(0)
 
 
+func add_option(msg):
+	mensagens.append(msg)
+
+func remove_option(msg):
+	mensagens.erase(msg)
+
+
 func base_examined(nome, local, cripto):
-	$Titulo.text = (nome + ", " + local).to_upper()
+	if local != "":
+		$Titulo.text = (nome + ", " + local).to_upper()
+		$Recursos.visible = true
+		opcoes = mensagens
+	else:
+		$Titulo.text = nome.to_upper()
+		$Recursos.visible = false
+		opcoes = suspeitos
+	
 	nome_atual = nome
 	criptografia_atual = cripto
 	atualizar_dados(0, 0)
@@ -40,9 +60,16 @@ func atualizar_maximo(estoque_supr, estoque_comp):
 
 func atualizar_mensagem(msg):
 	msg_atual = msg
-	$NomeMsg.text = mensagens[msg]
-	$TextoMsg/Texto.text = Codificador.codificar(mensagem_textos[msg], criptografia_atual)
-	$TextoMsg/Explicacao.text = explicacao[msg]
+	
+	if $Recursos.visible:
+		$Mensagem/NomeMsg.text = mensagens[msg_atual]
+		$Mensagem/TextoMsg/Texto.text = Codificador.codificar(mensagem_textos[msg_atual], criptografia_atual)
+		$Mensagem/TextoMsg/Explicacao.text = explicacao[msg_atual]
+	else:
+		$Mensagem/NomeMsg.text = suspeitos[msg_atual]
+		$Mensagem/TextoMsg/Texto.text = Codificador.codificar(texto_espiao, criptografia_atual)
+		$Mensagem/TextoMsg/Explicacao.text = "[" + texto_espiao + "]"
+
 
 func atualizar_dados(new_r, new_d):
 	if 0 <= new_r and new_r <= max_suprimentos:
@@ -50,22 +77,22 @@ func atualizar_dados(new_r, new_d):
 	if 0 <= new_d and new_d <= max_companhias:
 		companhias = new_d
 	
-	$Dados.text = str(suprimentos) + "x Suprimentos\n" + str(companhias) + "x Companhias"
+	$Recursos/Dados.text = str(suprimentos) + "x Suprimentos\n" + str(companhias) + "x Companhias"
 
 
 # BOTOES ----------------------------------------
 # Mensagens
 func _on_AntMensagem_button_up():
-	if msg_atual > 0:
-		atualizar_mensagem(msg_atual-1)
+	if msg_atual <= 0:
+		atualizar_mensagem(opcoes.size()-1)
 	else:
-		atualizar_mensagem(mensagens.size()-1)
+		atualizar_mensagem(msg_atual-1)
 
 func _on_ProxMensagem_button_up():
-	if msg_atual < mensagens.size()-1:
-		atualizar_mensagem(msg_atual+1)
-	else:
+	if msg_atual >= opcoes.size()-1:
 		atualizar_mensagem(0)
+	else:
+		atualizar_mensagem(msg_atual+1)
 
 # Racoes
 func _on_MenosRacao_button_up():
@@ -87,5 +114,5 @@ func _on_EnviarRecursos_button_up():
 	atualizar_dados(0, 0)
 
 func _on_EnviarMensagem_button_up():
-	emit_signal("envio_mensagem", nome_atual, msg_atual)
+	emit_signal("envio_mensagem", nome_atual, opcoes[msg_atual])
 	atualizar_mensagem(0)

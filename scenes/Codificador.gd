@@ -2,7 +2,7 @@ extends Node
 
 var alphabet = ['a','b','c','d','e','f','g','h','i','j',
 				'k','l','m','n','o','p','q','r','s','t',
-				'u','v','w','x','w','x','y','z']
+				'u','v','w','x','y','z']
 
 var morses = ["._", "_...", "_._.", "_..", ".", ".._.",
 			"__.", "....", "..", ".___", "_._",
@@ -18,7 +18,7 @@ func codificar(string, ftype):
 	if ftype == "nada":
 		return string
 	
-	string = string.to_lower()
+	#string = string.to_lower()
 	
 	if ftype == "reverso" or ftype == "morse":
 		return funcref(self, ftype).call_func(string)
@@ -40,21 +40,21 @@ func codificar(string, ftype):
 
 func cesar3(c, s, caps = false):
 	if caps:
-		s += alphabet[(3+alphabet.find(c)) % 26].to_lower()
+		s += alphabet[(3+alphabet.find(c)) % 26].to_upper()
 	else:
 		s += alphabet[(3+alphabet.find(c)) % 26]
 	return s
 
 func cesar7(c, s, caps = false):
 	if caps:
-		s += alphabet[(7+alphabet.find(c)) % 26].to_lower()
+		s += alphabet[(7+alphabet.find(c)) % 26].to_upper()
 	else:
 		s += alphabet[(7+alphabet.find(c)) % 26]
 	return s
 
 func atbash(c, s, caps = false):
 	if caps:
-		s += alphabet[25-alphabet.find(c)].to_lower()
+		s += alphabet[25-alphabet.find(c)].to_upper()
 	else:
 		s += alphabet[25-alphabet.find(c)]
 	return s
@@ -63,7 +63,7 @@ func reverso(string):
 	var s = ""
 	var word = ""
 	for c in string:
-		if c in alphabet or c.is_valid_integer():
+		if c in alphabet or c.to_lower() in alphabet or c.is_valid_integer():
 			word = word.insert(0, c)
 		else:
 			s += word + c

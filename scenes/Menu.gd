@@ -43,6 +43,8 @@ func _on_Jogar_button_up():
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	visible = false
+	$Timer.stop()
+	$Swap.stop()
 	emit_signal("start_game")
 
 func _on_Sair_button_up():

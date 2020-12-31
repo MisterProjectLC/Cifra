@@ -2,18 +2,20 @@ extends ColorRect
 
 var text_n = 0
 var textos = []
+var _semana = 0
 
 signal done
 
-func week_text(semana):
-	$Semana.text = "Semana " + str(semana)
-	$AnimationPlayer.play("Semana")
+func title_text(text):
+	$Titulo.text = text
+	$AnimationPlayer.play("Titulo")
 
+func week_text():
+	title_text("Semana " + str(_semana))
 
-func turn_text(semana):
+func turn_text():
 	$AnimationPlayer.play("FadeIn")
-	week_text(semana)
-
+	_semana += 1
 
 func introd_text(texts):
 	textos = texts
@@ -27,9 +29,12 @@ func advance_text():
 		text_n += 1
 		$AnimationPlayer.play("Texto")
 	else:
-		week_text(0)
+		week_text()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	if "Semana" == anim_name:
+	if "FadeIn" == anim_name:
+		week_text()
+	
+	elif "Titulo" == anim_name:
 		emit_signal("done")
