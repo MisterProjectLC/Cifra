@@ -70,9 +70,13 @@ func reverso(string):
 			word = ""
 	return s
 
-func polybius(c, s, _caps = false):
-	if c == 'z' or c == 'Z':
+func polybius(c, s, caps = false):
+	if c == 'z':
 		s += 'ee'
+	elif c == 'Z':
+		s += 'EE'
+	elif caps:
+		s += alphabet[alphabet.find(c)%5].to_upper() + alphabet[alphabet.find(c)/5].to_upper()
 	else:
 		s += alphabet[alphabet.find(c)%5] + alphabet[alphabet.find(c)/5]
 	return s
@@ -89,5 +93,5 @@ func morse(string):
 		elif c.is_valid_integer():
 			s += morse_nums[int(c)] + " "
 		else:
-			s += c + " "
+			s += "/"
 	return s

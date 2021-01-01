@@ -52,6 +52,7 @@ func set_cifra(cifra):
 
 
 func _on_LeftCifra_button_up():
+	Audio.play_sound(Audio.switch)
 	if cifra_atual > 0:
 		set_cifra(cifra_atual-1)
 	else:
@@ -59,6 +60,7 @@ func _on_LeftCifra_button_up():
 
 
 func _on_RightCifra_button_up():
+	Audio.play_sound(Audio.switch)
 	if cifra_atual < cifras.size()-1:
 		set_cifra(cifra_atual+1)
 	else:

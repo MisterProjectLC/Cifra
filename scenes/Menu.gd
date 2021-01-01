@@ -20,7 +20,9 @@ func _process(_delta):
 	$Mensagens/Label2.text = message2.substr(0, progress)
 
 func _on_Timer_timeout():
-	progress += 1
+	if progress < message1.length():
+		progress += 1
+		Audio.play_sound(Audio.typewriter)
 
 
 func _on_Swap_timeout():
@@ -28,7 +30,6 @@ func _on_Swap_timeout():
 		message1 = "\"" + messages[randi() % messages.size()] + "\""
 		progress = 0
 	else:
-		progress = message1.length()
 		message1 += "\n\"" + messages[randi() % messages.size()] + "\""
 	
 	message2 = Codificador.codificar(message1, "cesar3")
@@ -39,13 +40,16 @@ func _on_Swap_timeout():
 
 # BUTTONS ---------------------------------------------
 func _on_Jogar_button_up():
-	$AnimationPlayer.play("MenuFadeIn")
-
-func _on_AnimationPlayer_animation_finished(_anim_name):
-	visible = false
 	$Timer.stop()
 	$Swap.stop()
+	Audio.stop()
 	emit_signal("start_game")
+
 
 func _on_Sair_button_up():
 	get_tree().quit()
+	Audio.play_sound(Audio.button)
+
+
+func _on_FadeIn_done():
+	visible = false

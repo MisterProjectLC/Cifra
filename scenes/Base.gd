@@ -12,6 +12,9 @@ func _on_Base_button_up():
 func get_nome():
 	return nome
 
+func get_local():
+	return local
+
 func get_criptografia():
 	return criptografia
 

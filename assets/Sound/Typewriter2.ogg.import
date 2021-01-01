@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Typewriter2.ogg-f92535cc02b51ace22c6512b65b966d2.oggstr"
+
+[deps]
+
+source_file="res://assets/Sound/Typewriter2.ogg"
+dest_files=[ "res://.import/Typewriter2.ogg-f92535cc02b51ace22c6512b65b966d2.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

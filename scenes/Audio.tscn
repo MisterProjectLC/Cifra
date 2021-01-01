@@ -1,0 +1,47 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://scenes/Audio.gd" type="Script" id=1]
+[ext_resource path="res://assets/Sound/Rain.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/Sound/Typewriter8.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/Sound/Typewriter11.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/Sound/Typewriter3.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/Sound/Typewriter7.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/Sound/Typewriter5.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/Sound/Typewriter12.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/Sound/Typewriter10.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/Sound/Typewriter13.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/Sound/Typewriter6.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/Sound/Typewriter9.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/Sound/Typewriter2.ogg" type="AudioStream" id=13]
+[ext_resource path="res://assets/Sound/Typewriter14.ogg" type="AudioStream" id=14]
+[ext_resource path="res://assets/Sound/Typewriter4.ogg" type="AudioStream" id=15]
+[ext_resource path="res://assets/Sound/Typewriter.ogg" type="AudioStream" id=16]
+[ext_resource path="res://assets/Sound/Typewriter15.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/Music/Moonlight Serenade.ogg" type="AudioStream" id=18]
+[ext_resource path="res://assets/Sound/close_door_2.ogg" type="AudioStream" id=19]
+[ext_resource path="res://assets/Sound/Button.ogg" type="AudioStream" id=20]
+[ext_resource path="res://assets/Sound/Button-2.ogg" type="AudioStream" id=21]
+
+[node name="Audio" type="AudioStreamPlayer"]
+pause_mode = 2
+script = ExtResource( 1 )
+menu_theme = ExtResource( 18 )
+rain = ExtResource( 2 )
+typewriter = [ ExtResource( 16 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 15 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 12 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 14 ), ExtResource( 17 ) ]
+switch = [ ExtResource( 21 ) ]
+button = [ ExtResource( 20 ) ]
+pause = [ ExtResource( 19 ) ]
+
+[node name="Background" type="AudioStreamPlayer" parent="."]
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Sound" type="AudioStreamPlayer" parent="Sounds"]
+
+[node name="Sound2" type="AudioStreamPlayer" parent="Sounds"]
+
+[node name="Sound3" type="AudioStreamPlayer" parent="Sounds"]
+
+[node name="Sound4" type="AudioStreamPlayer" parent="Sounds"]
+
+[node name="Sound5" type="AudioStreamPlayer" parent="Sounds"]

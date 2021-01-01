@@ -1,4 +1,4 @@
-extends Button
+extends Control
 
 var nome = "Wilhelm, Kleinburg"
 var criptografia = "cesar"

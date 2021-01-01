@@ -23,7 +23,7 @@ func novo_pedido(nome, cripto, texto, prioridade = 0):
 	new.connect("pedido_acessado", self, "pedido_acessado")
 	
 	add_child(new)
-	new.margin_left = 8
+	new.margin_left = 10
 	new.margin_top = 800
 	new.margin_bottom = 847
 	

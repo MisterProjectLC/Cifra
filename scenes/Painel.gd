@@ -7,15 +7,19 @@ var max_suprimentos = 0
 var companhias = 0
 var max_companhias = 0
 
-var mensagens = ["Nulo", "Atacar", "Recuar", "Saquear"]
-var mensagem_textos = ["...", "Avance contra o inimigo.", 
-						"Recue para uma posicao segura.",
-						"Roube suprimentos.",
-						"Fuja. Laurson te procura."]
-var explicacao = ["", "[Perde soldados, progresso na guerra.]", 
-						"[Evita perdas, perde progresso na guerra.]",
-						"[Perde soldados, mas base não precisa de recursos este turno.]",
-						"[\"Eu sei que você é o traidor. Fuja. Laurson te procura.\"]"]
+var mensagens = ["Nulo", "Atacar", "Recuar", "Saquear", "Insistir", "Amor"]
+var mensagem_textos = {"Nulo":"...", "Atacar":"Avance contra o inimigo.", 
+						"Recuar":"Recue para uma posicao segura.",
+						"Saquear":"Roube suprimentos.",
+						"Aviso":"Fuja. Laurson te procura.",
+						"Insistir":"Isso e mandatorio, soldado.",
+						"Amor":"Sei de seu amor secreto."}
+var explicacao = {"Nulo":"", "Atacar":"[Perde soldados, avanca posicao.]", 
+						"Recuar":"[Evita perdas, perde posicao.]",
+						"Saquear":"[Perde soldados, mas base não precisa de recursos este turno.]",
+						"Aviso":"[\"Eu sei que você é o traidor. Fuja. Laurson te procura.\"]",
+						"Insistir":"[\"Insiste na mensagem que enviou neste dia.\"]",
+						"Amor":"[\"Eu sei de seu amor secreto.\"]"}
 var msg_atual = 0
 
 var suspeitos = ["Weinstein", "Shelberg", "Mish", "Bardon"]
@@ -47,6 +51,7 @@ func base_examined(nome, local, cripto):
 		$Recursos.visible = false
 		opcoes = suspeitos
 	
+	visible = true
 	nome_atual = nome
 	criptografia_atual = cripto
 	atualizar_dados(0, 0)
@@ -63,8 +68,8 @@ func atualizar_mensagem(msg):
 	
 	if $Recursos.visible:
 		$Mensagem/NomeMsg.text = mensagens[msg_atual]
-		$Mensagem/TextoMsg/Texto.text = Codificador.codificar(mensagem_textos[msg_atual], criptografia_atual)
-		$Mensagem/TextoMsg/Explicacao.text = explicacao[msg_atual]
+		$Mensagem/TextoMsg/Texto.text = Codificador.codificar(mensagem_textos[mensagens[msg_atual]], criptografia_atual)
+		$Mensagem/TextoMsg/Explicacao.text = explicacao[mensagens[msg_atual]]
 	else:
 		$Mensagem/NomeMsg.text = suspeitos[msg_atual]
 		$Mensagem/TextoMsg/Texto.text = Codificador.codificar(texto_espiao, criptografia_atual)

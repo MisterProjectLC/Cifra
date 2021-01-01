@@ -23,6 +23,7 @@ config/icon="res://assets/Icone.png"
 
 Parser="*res://scenes/Parser.gd"
 Codificador="*res://scenes/Codificador.gd"
+Audio="*res://scenes/Audio.tscn"
 
 [display]
 
