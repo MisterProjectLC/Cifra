@@ -7,6 +7,7 @@ var criptografia = "cesar3"
 signal base_examined
 
 func _on_Base_button_up():
+	Audio.play_sound(Audio.button2)
 	emit_signal("base_examined", nome, local, criptografia)
 
 func get_nome():

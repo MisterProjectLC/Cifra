@@ -1,11 +1,11 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Retangulo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/Fonts/TravelingTypewriter.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/Fonts/Typewriter.tres" type="DynamicFont" id=4]
 [ext_resource path="res://scenes/Recebimento.gd" type="Script" id=5]
-[ext_resource path="res://scenes/Relogio.gd" type="Script" id=6]
+[ext_resource path="res://scenes/Notas.gd" type="Script" id=6]
 [ext_resource path="res://scenes/Painel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Base.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/Detail1.png" type="Texture" id=9]
@@ -23,9 +23,25 @@
 [ext_resource path="res://scenes/Menu.gd" type="Script" id=21]
 [ext_resource path="res://scenes/Rain.gd" type="Script" id=22]
 [ext_resource path="res://scenes/Button.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scenes/Jukebox.gd" type="Script" id=24]
+[ext_resource path="res://assets/Music/Stardust-Artie-Shaw.ogg" type="AudioStream" id=25]
+[ext_resource path="res://assets/Music/Chopin_s-Polonaise-Carmen-Cavallaro-And-His-Orchestra.ogg" type="AudioStream" id=26]
+[ext_resource path="res://assets/Music/Frenesi-Artie-Shaw-and-his-Orchestra-Alberto-Dominguez.ogg" type="AudioStream" id=27]
+[ext_resource path="res://assets/Music/CELERY-STALKS-AT-MIDNIGHT-WILL-BRADLEY-_-his-ORCHESTRA.ogg" type="AudioStream" id=28]
+[ext_resource path="res://scenes/Relogio.gd" type="Script" id=29]
+[ext_resource path="res://assets/Music/Moonlight Serenade.ogg" type="AudioStream" id=30]
+[ext_resource path="res://assets/Music/Body-And-Soul-Coleman-Hawkins-and-his-Orchestra.ogg" type="AudioStream" id=31]
+[ext_resource path="res://assets/Music/Sleepy-Lagoon-Harry-James-and-his-Orchestra.ogg" type="AudioStream" id=32]
+[ext_resource path="res://assets/Music/PIANO-CONCERTO-IN-B-FLAT-Freddy-Martin-and-his-Orchestra.ogg" type="AudioStream" id=33]
+[ext_resource path="res://assets/Music/We_ll-Meet-Again.ogg" type="AudioStream" id=34]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 20
 use_filter = true
 font_data = ExtResource( 3 )
 
@@ -34,7 +50,28 @@ size = 60
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="DynamicFont" id=3]
+size = 20
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Notas"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Notas:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -366.976, 75 ), Vector2( 20, 75 ) ]
+}
+
+[sub_resource type="Animation" id=5]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("CloseLeft:rect_position")
@@ -46,7 +83,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -1100.21, 1 ), Vector2( -500, 1 ) ]
+"values": [ Vector2( -2000.21, 1 ), Vector2( -500, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CloseRight:rect_position")
@@ -58,25 +95,25 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1112.84, 1 ), Vector2( 595, 1 ) ]
+"values": [ Vector2( 2012.84, 1 ), Vector2( 595, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=6]
 size = 90
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=7]
 size = 50
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=8]
 size = 40
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
 tracks/0/interp = 1
@@ -90,7 +127,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=10]
 length = 8.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Texto:modulate")
@@ -105,7 +142,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=11]
 length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Titulo:modulate")
@@ -153,7 +190,6 @@ margin_bottom = 0.0
 color = Color( 0.360784, 0.360784, 0.360784, 1 )
 
 [node name="Main" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -164,13 +200,17 @@ __meta__ = {
 delta_comp = 4
 goller = ExtResource( 13 )
 
+[node name="Jukebox" type="Node" parent="Main"]
+script = ExtResource( 24 )
+game_themes = [ [ ExtResource( 25 ) ], [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 26 ) ], [ ExtResource( 26 ), ExtResource( 31 ), ExtResource( 28 ) ], [ ExtResource( 30 ) ], [ ExtResource( 32 ) ], [ ExtResource( 25 ) ], [ ExtResource( 30 ), ExtResource( 33 ), ExtResource( 34 ) ] ]
+
 [node name="Timer" type="Timer" parent="Main"]
 
 [node name="NovaMensagem" type="Timer" parent="Main"]
 wait_time = 60.0
 
 [node name="Turno" type="Timer" parent="Main"]
-wait_time = 240.0
+wait_time = 180.0
 
 [node name="Personagens" type="Node" parent="Main"]
 
@@ -280,6 +320,7 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 autowrap = true
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -290,7 +331,1179 @@ margin_right = 461.758
 margin_bottom = 189.743
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
 
-[node name="Label" type="Label" parent="Main/Recebimento/TabelaCifra"]
+[node name="NUMEROS" type="Control" parent="Main/Recebimento/TabelaCifra"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="Main/Recebimento/TabelaCifra/NUMEROS"]
+margin_left = 15.0
+margin_top = 8.431
+margin_right = 51.0
+margin_bottom = 47.431
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0>5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Main/Recebimento/TabelaCifra/NUMEROS"]
+margin_left = 81.7924
+margin_top = 8.226
+margin_right = 118.792
+margin_bottom = 47.226
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "1>6"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Main/Recebimento/TabelaCifra/NUMEROS"]
+margin_left = 148.742
+margin_top = 8.364
+margin_right = 185.742
+margin_bottom = 47.364
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "2>7"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Main/Recebimento/TabelaCifra/NUMEROS"]
+margin_left = 216.686
+margin_top = 7.96678
+margin_right = 253.686
+margin_bottom = 46.9668
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "3>8"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Main/Recebimento/TabelaCifra/NUMEROS"]
+margin_left = 285.822
+margin_top = 7.56957
+margin_right = 322.822
+margin_bottom = 46.5696
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "4>9"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label10" type="Label" parent="Main/Recebimento/TabelaCifra/NUMEROS"]
+margin_left = 13.8336
+margin_top = 51.5861
+margin_right = 49.8336
+margin_bottom = 90.5861
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "5>4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label9" type="Label" parent="Main/Recebimento/TabelaCifra/NUMEROS"]
+margin_left = 80.626
+margin_top = 51.3811
+margin_right = 117.626
+margin_bottom = 90.3811
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "6>3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label8" type="Label" parent="Main/Recebimento/TabelaCifra/NUMEROS"]
+margin_left = 147.575
+margin_top = 51.5191
+margin_right = 184.575
+margin_bottom = 90.5191
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "7>2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="Main/Recebimento/TabelaCifra/NUMEROS"]
+margin_left = 215.52
+margin_top = 51.1218
+margin_right = 252.52
+margin_bottom = 90.1218
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "8>1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="Main/Recebimento/TabelaCifra/NUMEROS"]
+margin_left = 284.656
+margin_top = 50.7246
+margin_right = 321.656
+margin_bottom = 89.7246
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "9>0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label11" type="Label" parent="Main/Recebimento/TabelaCifra/NUMEROS"]
+margin_left = 15.8318
+margin_top = 127.631
+margin_right = 425.832
+margin_bottom = 208.631
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Usado com Cesar-3, Cesar-7,
+Atbash e Polybius."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="Main/Recebimento/TabelaCifra/NUMEROS"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 424.296
+margin_top = 13.769
+margin_right = -13.7043
+margin_bottom = -166.231
+custom_fonts/font = SubResource( 12 )
+max_length = 1
+context_menu_enabled = false
+clear_button_enabled = true
+shortcut_keys_enabled = false
+placeholder_text = "Procurar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CESAR-3" type="Control" parent="Main/Recebimento/TabelaCifra"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label52" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 13.0
+margin_top = 8.431
+margin_right = 53.0
+margin_bottom = 47.431
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "A>X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label51" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 79.0
+margin_top = 8.0
+margin_right = 121.0
+margin_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "B>Y"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label50" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 147.742
+margin_top = 8.36401
+margin_right = 186.742
+margin_bottom = 47.364
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "C>Z"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label49" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 214.186
+margin_top = 7.9668
+margin_right = 256.186
+margin_bottom = 46.9668
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "D>A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label48" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 282.822
+margin_top = 7.56958
+margin_right = 325.822
+margin_bottom = 46.5696
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "E>B"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label47" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 11.8336
+margin_top = 45.586
+margin_right = 51.8336
+margin_bottom = 84.586
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "F>C"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label46" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 78.626
+margin_top = 45.381
+margin_right = 119.626
+margin_bottom = 84.381
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "G>D"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label45" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 145.075
+margin_top = 45.519
+margin_right = 187.075
+margin_bottom = 84.519
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "H>E"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label44" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 214.02
+margin_top = 45.1218
+margin_right = 254.02
+margin_bottom = 84.1218
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "I>F"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label43" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 283.656
+margin_top = 44.7246
+margin_right = 322.656
+margin_bottom = 83.7246
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "J>G"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label42" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 11.0
+margin_top = 85.9622
+margin_right = 55.0
+margin_bottom = 124.962
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "K>H"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label41" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 78.7924
+margin_top = 85.7572
+margin_right = 121.792
+margin_bottom = 124.757
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "L>I"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label40" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 146.242
+margin_top = 85.8952
+margin_right = 188.242
+margin_bottom = 124.895
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "M>J"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label39" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 214.186
+margin_top = 85.498
+margin_right = 256.186
+margin_bottom = 124.498
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "N>K"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label38" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 282.822
+margin_top = 85.1008
+margin_right = 325.822
+margin_bottom = 124.101
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "O>L"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label37" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 11.8336
+margin_top = 129.117
+margin_right = 51.8336
+margin_bottom = 168.117
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "P>M"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label36" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 78.626
+margin_top = 128.912
+margin_right = 119.626
+margin_bottom = 167.912
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Q>N"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label35" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 144.075
+margin_top = 129.05
+margin_right = 188.075
+margin_bottom = 168.05
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "R>O"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label34" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 214.02
+margin_top = 128.653
+margin_right = 254.02
+margin_bottom = 167.653
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "S>P"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label33" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 282.156
+margin_top = 128.256
+margin_right = 324.156
+margin_bottom = 167.256
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "T>Q"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label32" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 10.8336
+margin_top = 171.223
+margin_right = 52.8336
+margin_bottom = 210.223
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "U>R"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label31" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 78.626
+margin_top = 171.018
+margin_right = 119.626
+margin_bottom = 210.018
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "V>S"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label30" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 144.075
+margin_top = 171.156
+margin_right = 188.075
+margin_bottom = 210.156
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "W>T"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label29" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 213.02
+margin_top = 170.758
+margin_right = 255.02
+margin_bottom = 209.758
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "X>U"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label28" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 282.156
+margin_top = 170.361
+margin_right = 324.156
+margin_bottom = 209.361
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Y>V"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label27" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+margin_left = 349.524
+margin_top = 170.361
+margin_right = 391.524
+margin_bottom = 209.361
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Z>W"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit2" type="LineEdit" parent="Main/Recebimento/TabelaCifra/CESAR-3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 424.296
+margin_top = 13.769
+margin_right = -13.7043
+margin_bottom = -166.231
+custom_fonts/font = SubResource( 12 )
+max_length = 1
+context_menu_enabled = false
+clear_button_enabled = true
+shortcut_keys_enabled = false
+placeholder_text = "Procurar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CESAR-7" type="Control" parent="Main/Recebimento/TabelaCifra"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 15.0
+margin_top = 8.431
+margin_right = 51.0
+margin_bottom = 47.431
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "A>T"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 81.7924
+margin_top = 8.22601
+margin_right = 118.792
+margin_bottom = 47.226
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "B>U"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 148.742
+margin_top = 8.36401
+margin_right = 185.742
+margin_bottom = 47.364
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "C>V"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 216.686
+margin_top = 7.9668
+margin_right = 253.686
+margin_bottom = 46.9668
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "D>W"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 285.822
+margin_top = 7.56958
+margin_right = 322.822
+margin_bottom = 46.5696
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "E>X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 11.8336
+margin_top = 45.586
+margin_right = 51.8336
+margin_bottom = 84.586
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "F>Y"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 78.626
+margin_top = 45.381
+margin_right = 119.626
+margin_bottom = 84.381
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "G>Z"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label8" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 145.075
+margin_top = 45.519
+margin_right = 187.075
+margin_bottom = 84.519
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "H>A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label9" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 214.02
+margin_top = 45.1218
+margin_right = 254.02
+margin_bottom = 84.1218
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "I>B"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label10" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 283.656
+margin_top = 44.7246
+margin_right = 322.656
+margin_bottom = 83.7246
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "J>C"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label20" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 11.0
+margin_top = 85.9622
+margin_right = 55.0
+margin_bottom = 124.962
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "K>D"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label19" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 78.7924
+margin_top = 85.7572
+margin_right = 121.792
+margin_bottom = 124.757
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "L>E"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label18" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 146.242
+margin_top = 85.8952
+margin_right = 188.242
+margin_bottom = 124.895
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "M>F"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label17" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 214.186
+margin_top = 85.498
+margin_right = 256.186
+margin_bottom = 124.498
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "N>G"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label16" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 282.822
+margin_top = 85.1008
+margin_right = 325.822
+margin_bottom = 124.101
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "O>H"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label15" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 11.8336
+margin_top = 129.117
+margin_right = 51.8336
+margin_bottom = 168.117
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "P>I"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label14" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 78.626
+margin_top = 128.912
+margin_right = 119.626
+margin_bottom = 167.912
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Q>J"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label13" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 144.075
+margin_top = 129.05
+margin_right = 188.075
+margin_bottom = 168.05
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "R>K"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label12" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 214.02
+margin_top = 128.653
+margin_right = 254.02
+margin_bottom = 167.653
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "S>L"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label11" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 282.156
+margin_top = 128.256
+margin_right = 324.156
+margin_bottom = 167.256
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "T>M"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label25" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 11.8336
+margin_top = 171.223
+margin_right = 51.8336
+margin_bottom = 210.223
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "U>N"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label24" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 78.626
+margin_top = 171.018
+margin_right = 119.626
+margin_bottom = 210.018
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "V>O"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label23" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 144.075
+margin_top = 171.156
+margin_right = 188.075
+margin_bottom = 210.156
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "W>P"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label22" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 214.02
+margin_top = 170.758
+margin_right = 254.02
+margin_bottom = 209.758
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "X>Q"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label21" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 282.156
+margin_top = 170.361
+margin_right = 324.156
+margin_bottom = 209.361
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Y>R"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label26" type="Label" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+margin_left = 349.524
+margin_top = 170.361
+margin_right = 391.524
+margin_bottom = 209.361
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Z>S"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="Main/Recebimento/TabelaCifra/CESAR-7"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 424.296
+margin_top = 13.769
+margin_right = -13.7043
+margin_bottom = -166.231
+custom_fonts/font = SubResource( 12 )
+max_length = 1
+context_menu_enabled = false
+clear_button_enabled = true
+shortcut_keys_enabled = false
+placeholder_text = "Procurar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ATBASH" type="Control" parent="Main/Recebimento/TabelaCifra"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label52" type="Label" parent="Main/Recebimento/TabelaCifra/ATBASH"]
+margin_left = 14.084
+margin_top = 6.22571
+margin_right = 72.084
+margin_bottom = 45.2257
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "A<->Z"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label53" type="Label" parent="Main/Recebimento/TabelaCifra/ATBASH"]
+margin_left = 96.1495
+margin_top = 5.49063
+margin_right = 156.149
+margin_bottom = 44.4906
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "B<->Y"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label54" type="Label" parent="Main/Recebimento/TabelaCifra/ATBASH"]
+margin_left = 182.891
+margin_top = 5.49063
+margin_right = 242.891
+margin_bottom = 44.4906
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "C<->X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label55" type="Label" parent="Main/Recebimento/TabelaCifra/ATBASH"]
+margin_left = 268.161
+margin_top = 6.22574
+margin_right = 328.161
+margin_bottom = 45.2257
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "D<->W"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label59" type="Label" parent="Main/Recebimento/TabelaCifra/ATBASH"]
+margin_left = 14.7823
+margin_top = 46.7294
+margin_right = 72.7823
+margin_bottom = 85.7294
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "E<->V"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label58" type="Label" parent="Main/Recebimento/TabelaCifra/ATBASH"]
+margin_left = 96.8478
+margin_top = 45.9943
+margin_right = 156.848
+margin_bottom = 84.9943
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "F<->U"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label57" type="Label" parent="Main/Recebimento/TabelaCifra/ATBASH"]
+margin_left = 183.589
+margin_top = 45.9943
+margin_right = 243.589
+margin_bottom = 84.9943
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "G<->T"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label56" type="Label" parent="Main/Recebimento/TabelaCifra/ATBASH"]
+margin_left = 268.86
+margin_top = 46.7294
+margin_right = 328.86
+margin_bottom = 85.7294
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "H<->S"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label63" type="Label" parent="Main/Recebimento/TabelaCifra/ATBASH"]
+margin_left = 12.8857
+margin_top = 88.6297
+margin_right = 71.8857
+margin_bottom = 127.63
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "I<->R"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label62" type="Label" parent="Main/Recebimento/TabelaCifra/ATBASH"]
+margin_left = 95.4511
+margin_top = 87.8946
+margin_right = 155.451
+margin_bottom = 126.895
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "J<->Q"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label61" type="Label" parent="Main/Recebimento/TabelaCifra/ATBASH"]
+margin_left = 182.192
+margin_top = 87.8946
+margin_right = 242.192
+margin_bottom = 126.895
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "K<->P"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label60" type="Label" parent="Main/Recebimento/TabelaCifra/ATBASH"]
+margin_left = 267.463
+margin_top = 88.6297
+margin_right = 327.463
+margin_bottom = 127.63
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "L<->O"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label64" type="Label" parent="Main/Recebimento/TabelaCifra/ATBASH"]
+margin_left = 351.805
+margin_top = 90.1773
+margin_right = 411.805
+margin_bottom = 129.177
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "M<->N"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit2" type="LineEdit" parent="Main/Recebimento/TabelaCifra/ATBASH"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 424.296
+margin_top = 13.769
+margin_right = -13.7043
+margin_bottom = -166.231
+custom_fonts/font = SubResource( 12 )
+max_length = 1
+context_menu_enabled = false
+clear_button_enabled = true
+shortcut_keys_enabled = false
+placeholder_text = "Procurar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="REVERSO" type="Control" parent="Main/Recebimento/TabelaCifra"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="Main/Recebimento/TabelaCifra/REVERSO"]
 margin_left = 13.0
 margin_top = 5.0
 margin_right = 539.0
@@ -299,13 +1512,591 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "A->X  B->Y  C->Z  D->A  E->B  
-F->C  G->D  H->E  I->F  J->G  
-K->H  L->I  M->J  N->K  O->L  
-P->M  Q->N  R->O  S->P  T->Q  
-U->R  V->S  W->T  X->U  Y->V  Z->W"
+text = "Cada palavra está com sua
+ordem reversa.
+Exemplo:
+'Frase exemplo -> ESARF OLPMEXE"
 __meta__ = {
-"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="POLYBIUS" type="Control" parent="Main/Recebimento/TabelaCifra"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="Main/Recebimento/TabelaCifra/POLYBIUS"]
+margin_left = 13.0
+margin_top = 5.0
+margin_right = 539.0
+margin_bottom = 212.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "A B C D  E    Cada letra corres-
+F G H I  J    ponde a uma coorde-
+K L M N  O    nada da tabela.
+P Q R S  T    Exemplos:
+U V W X Y/Z   CA>C. CB>H. DE>X."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MORSE" type="Control" parent="Main/Recebimento/TabelaCifra"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label52" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 13.4448
+margin_top = 5.01822
+margin_right = 76.4448
+margin_bottom = 44.0182
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "A>.__"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label51" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 110.746
+margin_top = 4.8132
+margin_right = 171.746
+margin_bottom = 43.8132
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "B>_..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label50" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 198.18
+margin_top = 5.28394
+margin_right = 267.18
+margin_bottom = 44.2839
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "C>_._."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label53" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 281.341
+margin_top = 4.7706
+margin_right = 350.341
+margin_bottom = 43.7706
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "D>_.."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label54" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 373.0
+margin_top = 5.0
+margin_right = 419.0
+margin_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "E>."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label75" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 15.8329
+margin_top = 49.3329
+margin_right = 74.8329
+margin_bottom = 88.3329
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "F>.._."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label59" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 108.793
+margin_top = 49.0874
+margin_right = 172.793
+margin_bottom = 88.0874
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "G>__."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label58" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 198.894
+margin_top = 48.8824
+margin_right = 259.894
+margin_bottom = 87.8824
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "H>...."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label57" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 287.868
+margin_top = 48.8398
+margin_right = 356.868
+margin_bottom = 87.8398
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "I>.."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label56" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 364.312
+margin_top = 48.3264
+margin_right = 444.312
+margin_bottom = 87.3264
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "J>.___"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label55" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 464.919
+margin_top = 48.0379
+margin_right = 533.919
+margin_bottom = 87.0379
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "K>_._"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label64" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 14.3958
+margin_top = 89.7271
+margin_right = 78.3958
+margin_bottom = 128.727
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "L>._.."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label63" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 110.782
+margin_top = 88.8237
+margin_right = 171.782
+margin_bottom = 127.824
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "M>__"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label62" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 196.264
+margin_top = 89.4794
+margin_right = 265.264
+margin_bottom = 128.479
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "N>_."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label61" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 282.837
+margin_top = 88.9661
+margin_right = 362.837
+margin_bottom = 127.966
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "O>___"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label60" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 369.8
+margin_top = 89.5349
+margin_right = 439.8
+margin_bottom = 128.535
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "P>.__."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label69" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 13.0
+margin_top = 132.0
+margin_right = 101.0
+margin_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Q>__._"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label68" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 119.86
+margin_top = 130.724
+margin_right = 180.86
+margin_bottom = 169.724
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "R>._."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label67" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 201.152
+margin_top = 130.681
+margin_right = 270.152
+margin_bottom = 169.681
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "S>..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label66" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 280.742
+margin_top = 130.866
+margin_right = 360.742
+margin_bottom = 169.866
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "T>_"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label65" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 373.99
+margin_top = 130.737
+margin_right = 443.99
+margin_bottom = 169.737
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "U>.._"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label74" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 13.0
+margin_top = 171.911
+margin_right = 101.0
+margin_bottom = 210.911
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "V>..._"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label73" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 110.0
+margin_top = 174.0
+margin_right = 186.0
+margin_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "W>.__"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label72" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 200.152
+margin_top = 173.85
+margin_right = 271.152
+margin_bottom = 212.85
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "X>_.._"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label71" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 283.443
+margin_top = 173.443
+margin_right = 375.443
+margin_bottom = 212.443
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Y>_.__"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label70" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE"]
+margin_left = 376.0
+margin_top = 172.0
+margin_right = 461.0
+margin_bottom = 211.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Z>__.."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit2" type="LineEdit" parent="Main/Recebimento/TabelaCifra/MORSE"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 424.896
+margin_top = 8.47113
+margin_right = -13.1041
+margin_bottom = -171.529
+custom_fonts/font = SubResource( 12 )
+max_length = 1
+context_menu_enabled = false
+clear_button_enabled = true
+shortcut_keys_enabled = false
+placeholder_text = "Procurar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MORSE - NUMEROS" type="Control" parent="Main/Recebimento/TabelaCifra"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label22" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE - NUMEROS"]
+margin_left = 12.0
+margin_top = 5.0
+margin_right = 130.0
+margin_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0>_____"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label23" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE - NUMEROS"]
+margin_left = 147.375
+margin_top = 4.43115
+margin_right = 265.375
+margin_bottom = 43.4312
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "1>.____"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label24" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE - NUMEROS"]
+margin_left = 269.667
+margin_top = 4.43115
+margin_right = 387.667
+margin_bottom = 43.4312
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "2>..___"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label25" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE - NUMEROS"]
+margin_left = 15.4716
+margin_top = 55.4099
+margin_right = 133.472
+margin_bottom = 94.4099
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "3>...__"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label26" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE - NUMEROS"]
+margin_left = 147.458
+margin_top = 55.8705
+margin_right = 265.458
+margin_bottom = 94.8705
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "4>...._"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label27" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE - NUMEROS"]
+margin_left = 266.873
+margin_top = 54.4739
+margin_right = 384.873
+margin_bottom = 93.4739
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "5>....."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label30" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE - NUMEROS"]
+margin_left = 12.0
+margin_top = 106.473
+margin_right = 130.0
+margin_bottom = 145.473
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "6>_...."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label29" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE - NUMEROS"]
+margin_left = 147.375
+margin_top = 105.904
+margin_right = 265.375
+margin_bottom = 144.904
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "7>__..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label28" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE - NUMEROS"]
+margin_left = 269.667
+margin_top = 105.904
+margin_right = 387.667
+margin_bottom = 144.904
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "8>___.."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label32" type="Label" parent="Main/Recebimento/TabelaCifra/MORSE - NUMEROS"]
+margin_left = 12.0
+margin_top = 157.058
+margin_right = 130.0
+margin_bottom = 196.058
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "9>____."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit2" type="LineEdit" parent="Main/Recebimento/TabelaCifra/MORSE - NUMEROS"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 424.296
+margin_top = 13.769
+margin_right = -13.7043
+margin_bottom = -166.231
+custom_fonts/font = SubResource( 12 )
+max_length = 1
+context_menu_enabled = false
+clear_button_enabled = true
+shortcut_keys_enabled = false
+placeholder_text = "Procurar"
+__meta__ = {
 "_edit_use_anchors_": false
 }
 
@@ -509,56 +2300,145 @@ color = Color( 0.988235, 0.909804, 0.772549, 1 )
 [node name="Troca" parent="Main" instance=ExtResource( 23 )]
 margin_left = -82.0
 margin_top = 289.0
-margin_right = 99.0
+margin_right = 93.0
 margin_bottom = 337.0
 label = "ENVIO"
 
 [node name="Relogio" parent="Main" instance=ExtResource( 2 )]
-margin_left = 110.686
-margin_top = 285.896
-margin_right = 248.686
-margin_bottom = 338.896
+margin_left = 107.143
+margin_top = 284.0
+margin_right = 253.143
+margin_bottom = 337.0
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 29 )
 
 [node name="Label" type="Label" parent="Main/Relogio"]
 anchor_left = 0.456835
 anchor_top = 0.386792
 anchor_right = 0.543165
 anchor_bottom = 0.613208
-margin_left = -30.423
-margin_top = -15.9401
-margin_right = 56.6635
-margin_bottom = 15.0599
+margin_left = -22.8017
+margin_top = -10.5
+margin_right = 24.1983
+margin_bottom = 10.5
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "15:03"
+text = "10:00"
+align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Reveal" type="ColorRect" parent="Main/Relogio"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 143.0
+margin_bottom = 50.0
+color = Color( 0.992157, 0.890196, 0.713726, 1 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+normal_color = "fde3b6"
+hover_color = "00fde3b6"
+
 [node name="Encerrar" parent="Main" instance=ExtResource( 23 )]
-margin_left = 88.2937
-margin_top = 347.0
-margin_right = 269.294
-margin_bottom = 382.0
+margin_left = 85.0
+margin_top = 346.0
+margin_right = 274.0
+margin_bottom = 378.0
 label = "ENCERRAR"
 
 [node name="Pausar" parent="Main" instance=ExtResource( 23 )]
-margin_left = 263.397
-margin_top = 288.143
-margin_right = 444.397
-margin_bottom = 336.143
+margin_left = 269.1
+margin_top = 288.0
+margin_right = 444.1
+margin_bottom = 336.0
 label = "PAUSA"
+
+[node name="Notas" type="ColorRect" parent="Main"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1468.65
+margin_top = 75.0
+margin_right = -1054.65
+margin_bottom = -152.0
+color = Color( 0.980392, 0.92549, 0.831373, 1 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Main/Notas"]
+margin_left = 408.93
+margin_top = 226.058
+margin_right = 486.93
+margin_bottom = 262.058
+grow_horizontal = 2
+grow_vertical = 2
+rect_rotation = 90.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "NOTAS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Main/Notas"]
+margin_left = 10.0
+margin_top = 3.0
+margin_right = 342.0
+margin_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Utilize o espaço como quiser."
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit" type="TextEdit" parent="Main/Notas"]
+margin_left = 14.0
+margin_top = 87.2599
+margin_right = 349.0
+margin_bottom = 237.26
+custom_fonts/font = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit2" type="TextEdit" parent="Main/Notas"]
+margin_left = 12.9
+margin_top = 243.104
+margin_right = 349.9
+margin_bottom = 402.104
+custom_fonts/font = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit3" type="TextEdit" parent="Main/Notas"]
+margin_left = 12.9
+margin_top = 408.104
+margin_right = 349.9
+margin_bottom = 550.104
+custom_fonts/font = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CloseLeft" parent="Main" instance=ExtResource( 2 )]
 pause_mode = 2
-margin_left = -1650.21
+margin_left = -2550.21
 margin_top = -399.0
-margin_right = -551.21
+margin_right = -1451.22
 margin_bottom = 402.0
 color = Color( 0.152941, 0.152941, 0.152941, 1 )
 
@@ -589,24 +2469,27 @@ margin_left = 302.5
 margin_top = -182.5
 margin_right = 502.5
 margin_bottom = -134.5
+label = "CONTINUAR"
 
 [node name="Menu" parent="Main/CloseLeft" instance=ExtResource( 23 )]
 margin_left = 302.5
 margin_top = -68.5378
 margin_right = 502.5
 margin_bottom = -20.5378
+label = "MENU"
 
 [node name="Sair" parent="Main/CloseLeft" instance=ExtResource( 23 )]
 margin_left = 301.59
 margin_top = 46.1714
 margin_right = 501.59
 margin_bottom = 94.1714
+label = "SAIR"
 
 [node name="CloseRight" parent="Main" instance=ExtResource( 2 )]
 pause_mode = 2
-margin_left = 562.84
+margin_left = 1462.84
 margin_top = -399.0
-margin_right = 1661.84
+margin_right = 2561.84
 margin_bottom = 402.0
 color = Color( 0.152941, 0.152941, 0.152941, 1 )
 
@@ -634,9 +2517,11 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Main"]
 pause_mode = 2
-anims/PauseMenu = SubResource( 3 )
+anims/Notas = SubResource( 4 )
+anims/PauseMenu = SubResource( 5 )
 
 [node name="Menu" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 21 )
@@ -660,7 +2545,7 @@ margin_right = 368.948
 margin_bottom = 134.584
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Cifra"
 autowrap = true
@@ -705,6 +2590,68 @@ margin_top = 78.2735
 margin_right = 133.157
 margin_bottom = 125.274
 label = "SAIR"
+
+[node name="Options" parent="Menu" instance=ExtResource( 2 )]
+visible = false
+margin_left = -484.0
+margin_top = -126.0
+margin_right = -43.0
+margin_bottom = 340.0
+color = Color( 0.152941, 0.152941, 0.152941, 1 )
+
+[node name="Sound" type="Label" parent="Menu/Options"]
+margin_left = 99.277
+margin_top = 48.7818
+margin_right = 347.277
+margin_bottom = 87.7818
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+text = "VOLUME DE SOM"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoundSlider" type="HSlider" parent="Menu/Options"]
+margin_left = 95.5854
+margin_top = 82.4284
+margin_right = 351.585
+margin_bottom = 137.428
+value = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="Label" parent="Menu/Options"]
+margin_left = 68.9999
+margin_top = 185.705
+margin_right = 384.0
+margin_bottom = 224.705
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+text = "VOLUME DE MÚSICA"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicSlider" type="HSlider" parent="Menu/Options"]
+margin_left = 93.6853
+margin_top = 217.995
+margin_right = 349.685
+margin_bottom = 272.995
+value = 50.0
+
+[node name="Voltar" parent="Menu/Options" instance=ExtResource( 23 )]
+margin_left = -140.72
+margin_top = 91.3196
+margin_right = 129.28
+margin_bottom = 138.32
+label = "VOLTAR"
 
 [node name="Swap" type="Timer" parent="Menu"]
 wait_time = 3.0
@@ -773,11 +2720,12 @@ margin_right = 286.051
 margin_bottom = 128.321
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 7 )
 align = 1
 valign = 1
 autowrap = true
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -793,17 +2741,18 @@ margin_right = 401.48
 margin_bottom = 176.884
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 8 )
 align = 1
 autowrap = true
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FadeIn"]
-anims/FadeIn = SubResource( 6 )
-anims/Texto = SubResource( 7 )
-anims/Titulo = SubResource( 8 )
+anims/FadeIn = SubResource( 9 )
+anims/Texto = SubResource( 10 )
+anims/Titulo = SubResource( 11 )
 [connection signal="fade_in" from="Main" to="FadeIn" method="fade_in"]
 [connection signal="text" from="Main" to="FadeIn" method="text"]
 [connection signal="title_text" from="Main" to="FadeIn" method="title_text"]
@@ -817,6 +2766,12 @@ anims/Titulo = SubResource( 8 )
 [connection signal="add_opcao" from="Main/Personagens/Laurson" to="Main" method="add_option"]
 [connection signal="substituicao" from="Main/Personagens/Laurson" to="Main" method="spawn_goller"]
 [connection signal="pedido_acessado" from="Main/Recebimento/Pedidos/PedidosManager" to="Main" method="pedido_acessado"]
+[connection signal="text_changed" from="Main/Recebimento/TabelaCifra/NUMEROS/LineEdit" to="Main/Recebimento" method="_on_LineEdit_text_changed"]
+[connection signal="text_changed" from="Main/Recebimento/TabelaCifra/CESAR-3/LineEdit2" to="Main/Recebimento" method="_on_LineEdit_text_changed"]
+[connection signal="text_changed" from="Main/Recebimento/TabelaCifra/CESAR-7/LineEdit" to="Main/Recebimento" method="_on_LineEdit_text_changed"]
+[connection signal="text_changed" from="Main/Recebimento/TabelaCifra/ATBASH/LineEdit2" to="Main/Recebimento" method="_on_LineEdit_text_changed"]
+[connection signal="text_changed" from="Main/Recebimento/TabelaCifra/MORSE/LineEdit2" to="Main/Recebimento" method="_on_LineEdit_text_changed"]
+[connection signal="text_changed" from="Main/Recebimento/TabelaCifra/MORSE - NUMEROS/LineEdit2" to="Main/Recebimento" method="_on_LineEdit_text_changed"]
 [connection signal="button_up" from="Main/Recebimento/LeftCifra" to="Main/Recebimento" method="_on_LeftCifra_button_up"]
 [connection signal="button_up" from="Main/Recebimento/RightCifra" to="Main/Recebimento" method="_on_RightCifra_button_up"]
 [connection signal="base_examined" from="Main/Envio/Bases/Lonpris" to="Main/Envio/Painel/PainelTexto" method="base_examined"]
@@ -827,16 +2782,25 @@ anims/Titulo = SubResource( 8 )
 [connection signal="envio_mensagem" from="Main/Envio/Painel/PainelTexto" to="Main" method="_on_PainelTexto_envio_mensagem"]
 [connection signal="envio_recursos" from="Main/Envio/Painel/PainelTexto" to="Main" method="_on_PainelTexto_envio_recursos"]
 [connection signal="button_up" from="Main/Troca" to="Main" method="_on_Troca_button_up"]
+[connection signal="mouse_entered" from="Main/Relogio/Reveal" to="Main/Relogio/Reveal" method="_on_Notas_mouse_entered"]
+[connection signal="mouse_exited" from="Main/Relogio/Reveal" to="Main/Relogio/Reveal" method="_on_Notas_mouse_exited"]
 [connection signal="button_up" from="Main/Encerrar" to="Main" method="_on_Encerrar_button_up"]
 [connection signal="button_up" from="Main/Pausar" to="Main" method="_on_Pausar_button_up"]
+[connection signal="clicked" from="Main/Notas" to="Main" method="_on_Notas_clicked"]
+[connection signal="gui_input" from="Main/Notas" to="Main/Notas" method="_on_Notas_gui_input"]
+[connection signal="mouse_entered" from="Main/Notas" to="Main/Notas" method="_on_Notas_mouse_entered"]
+[connection signal="mouse_exited" from="Main/Notas" to="Main/Notas" method="_on_Notas_mouse_exited"]
 [connection signal="button_up" from="Main/CloseLeft/Continuar" to="Main" method="_on_Continuar_button_up"]
 [connection signal="button_up" from="Main/CloseLeft/Menu" to="Main" method="_on_Menu_button_up"]
 [connection signal="button_up" from="Main/CloseLeft/Sair" to="Main" method="_on_Sair_button_up"]
 [connection signal="animation_finished" from="Main/AnimationPlayer" to="Main" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="start_game" from="Menu" to="Main" method="_on_Menu_start_game"]
 [connection signal="button_up" from="Menu/Panel/Jogar" to="Menu" method="_on_Jogar_button_up"]
-[connection signal="button_up" from="Menu/Panel/Opcoes" to="Menu" method="_on_Jogar_button_up"]
-[connection signal="button_up" from="Menu/Panel/Sair" to="Menu" method="_on_Jogar_button_up"]
+[connection signal="button_up" from="Menu/Panel/Opcoes" to="Menu" method="_on_Opcoes_button_up"]
+[connection signal="button_up" from="Menu/Panel/Sair" to="Main" method="_on_Sair_button_up"]
+[connection signal="value_changed" from="Menu/Options/SoundSlider" to="Menu" method="_on_SoundSlider_value_changed"]
+[connection signal="value_changed" from="Menu/Options/MusicSlider" to="Menu" method="_on_MusicSlider_value_changed"]
+[connection signal="button_up" from="Menu/Options/Voltar" to="Menu" method="_on_Voltar_button_up"]
 [connection signal="timeout" from="Menu/Swap" to="Menu" method="_on_Swap_timeout"]
 [connection signal="timeout" from="Menu/Timer" to="Menu" method="_on_Timer_timeout"]
 [connection signal="done" from="FadeIn" to="Main" method="_on_FadeIn_done"]

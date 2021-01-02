@@ -1,12 +1,12 @@
 extends "Soldado.gd"
 
 var estado = 0
-
+var amor = false
 signal abastecido
 
 func tomar_acoes():
 	if turno >= 2:
-		if _companhias <= 1 and _ordem == "" or _ordem == "Atacar":
+		if _companhias <= 1 and (_ordem == "" or _ordem == "Atacar"):
 			_ordem = "Recuar"
 			estado = 1
 		
@@ -39,23 +39,39 @@ func enviar_mensagens():
 							"Este inverno esta especialmente rigoroso."), 1)
 		if _companhias <= 1:
 			enviar_pedido("Estamos quase perdendo nossa posicao. Envie mais soldados.", 2)
-
-
+	
+	elif turno == 4:
+		if _suprimentos <= _companhias:
+			enviar_pedido(("Envie " + str(2*_companhias-_suprimentos) + " suprimentos. " +
+							"Este inverno esta especialmente rigoroso."), 1)
+		if _companhias <= 1:
+			enviar_pedido("Estamos quase perdendo nossa posicao. Envie mais soldados.", 2)
+	
 	if turno >= 2:
 		if estado == 1:
 			enviar_pedido("Recuei meu batalhao. Caso contrario, estariamos mortos.", 2)
 			estado = 2
 
+
 func receive_message(message):
 	.receive_message(message)
-	if estado == 3:
-		enviar_pedido(("Nao. Nao tomo mais ordens de voce."))
-	
-	elif message == "Aviso":
+	if message == "Aviso":
 		enviar_pedido(("Voce... Voce realmente acha que EU sou o Traidor? " +
 					"Eu faco parte dessa guerra porque e meu dever. E so isso." +
-					"Mas eu nao iria trair o pais desse jeito."))
+					"Mas eu nao iria trair o pais desse jeito."), -1)
 		estado = 3
+	
+	elif message == "Amor" and !amor:
+		if estado == 3:
+			enviar_pedido(("...Maldito. Escuta, eu tenho uma familia la, sim. Mas " +
+			"nao fale sobre isso para ninguem. Eles podem me prender, ou... pior."), -1)
+		else:
+			enviar_pedido(("Ah. Entao voce sabe... Sim, antes da guerra, eu morava em Heimzuck " +
+			"com minha esposa. Agora... honestamente, eu nao sei o que fazer."), -1)
+		amor = true
+	
+	elif estado == 3:
+		enviar_pedido(("Nao. Nao tomo mais ordens de voce."), -1)
 	
 	else:
 		_ordem = message

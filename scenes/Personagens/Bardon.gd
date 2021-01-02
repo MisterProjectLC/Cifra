@@ -41,8 +41,7 @@ func enviar_mensagens():
 			enviar_pedido(("Precisamos de mais " + str(2*_companhias-_suprimentos) +
 						"suprimentos."), 3)
 		if _companhias <= 2:
-			enviar_pedido(("Estamos com so 2 companhias aqui. " +
-			"Para manter nossa posicao, precisamos de mais 3, no minimo."), 2)
+			enviar_pedido(("Para manter nossa posicao, precisamos de mais 3 companhias, no minimo."), 2)
 
 
 func receive_suprimentos(new):
@@ -55,32 +54,32 @@ func receive_message(message):
 	.receive_message(message)
 	if message == "Atacar":
 		if !tentou_atacar:
-			enviar_pedido(("Nao avancaremos. Nao tomaremos parte na vinganca coletiva dessa nacao."), 5)
+			enviar_pedido(("Nao avancaremos. Nao tomaremos parte na vinganca coletiva dessa nacao."), -1)
 			tentou_atacar = true
 
 	elif message == "Aviso":
 		if !avisado:
-			enviar_pedido(("Fugir? O Laurson... Nao, o Laurson nao faria isso. Nao gosto dessa " +
-					"guerra, mas as tropas precisam de um medico."), 1)
+			enviar_pedido(("Fugir? O Ken... Nao, ele nao faria isso. Nao gosto dessa " +
+					"guerra, mas as tropas precisam de um medico."), -1)
 			avisado = true
 	
 	elif message == "Insistir":
 		if _message_received == "Atacar":
 			if enviado == 2:
-				enviar_pedido(("...Tudo bem. O sangue estara nas suas maos, mas eu avanco."), 5)
+				enviar_pedido(("...Tudo bem. O sangue estara nas suas maos, mas eu avanco."), -1)
 			else:
-				enviar_pedido(("NAO. Por causa de voce, nossas tropas estao mortas e feridas. Nao vamos avancar."), 5)
+				enviar_pedido(("NAO. Por causa de voce, nossas tropas estao mortas e feridas. Nao vamos avancar."), -1)
 		
 		elif _message_received == "Amor":
 			if enviado < 2:
-				enviar_pedido(("Tudo bem. Voce quer me ver na forca? Tudo bem. Sim, eu admito. " +
-					"Eu... Sim, eu... Eu amo ele."), 5)
+				enviar_pedido(("Tudo bem. Voce quer me ver na forca? Sim, eu admito. " +
+					"Eu... Sim, eu... Eu amo ele."), -1)
 	
 	elif message == "Amor":
 		if enviado == 2:
-			enviar_pedido(("...Escuta. Eu conheco o Laurson... desde ha muito tempo."), 0)
+			enviar_pedido(("...Escuta. Eu conheco o Laurson... desde ha muito tempo."), -1)
 		else:
-			enviar_pedido(("Eu nao sei do que voce ta falando. Nao comente mais disso."), 0)
+			enviar_pedido(("Eu nao sei do que voce ta falando. Nao comente mais disso."), -1)
 	
 	else:
 		_ordem = message

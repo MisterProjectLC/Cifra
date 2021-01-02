@@ -27,4 +27,5 @@ func get_prioridade():
 	return prioridade
 
 func _on_Pedido_button_up():
+	Audio.play_sound(Audio.button2)
 	emit_signal("pedido_acessado", criptografia, texto)

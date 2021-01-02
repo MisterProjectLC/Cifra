@@ -1,5 +1,7 @@
 extends "Soldado.gd"
 
+var errei = false
+var amor = false
 signal escape
 
 func tomar_acoes():
@@ -41,11 +43,12 @@ func enviar_mensagens():
 func receive_suprimentos(new):
 	.receive_suprimentos(new)
 	
-	if turno == 1 and new <= 4:
-		enviar_pedido("Perdao, errei. 6 suprimentos, na verdade.", 1)
+	if turno == 1 and new <= 4 and !errei:
+		enviar_pedido("Perdao, errei. 6 suprimentos, na verdade.", -1)
+		errei = true
 	
 	if turno == 4 and new > 0:
-		enviar_pedido("Obrigado, operador.", 1)
+		enviar_pedido("Obrigado, operador.", -1)
 
 
 func receive_message(message):
@@ -55,10 +58,11 @@ func receive_message(message):
 	
 	if message == "Aviso":
 		enviar_pedido(("...Entendido. Obrigado, operador. Se sua torre cair para nossas forcas, " +
-					"avisarei para te pouparem. Adeus."), 10)
+					"avisarei para te pouparem. Adeus."), -1)
 		emit_signal("escape")
 	
-	elif message == "Amor":
-		enviar_pedido(("Amor? Do que voce ta falando?"), 0)
+	elif message == "Amor" and !amor:
+		enviar_pedido(("Amor? Do que voce ta falando?"), -1)
+		amor = true
 	else:
 		_ordem = message

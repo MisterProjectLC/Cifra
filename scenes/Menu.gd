@@ -45,10 +45,22 @@ func _on_Jogar_button_up():
 	Audio.stop()
 	emit_signal("start_game")
 
+func _on_Opcoes_button_up():
+	$Options.visible = true
 
 func _on_Sair_button_up():
 	get_tree().quit()
 	Audio.play_sound(Audio.button)
+
+
+func _on_SoundSlider_value_changed(value):
+	Audio.set_sound_volume(value*0.01)
+
+func _on_MusicSlider_value_changed(value):
+	Audio.set_music_volume(value*0.01)
+
+func _on_Voltar_button_up():
+	$Options.visible = false
 
 
 func _on_FadeIn_done():

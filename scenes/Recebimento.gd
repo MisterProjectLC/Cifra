@@ -1,42 +1,19 @@
 extends Control
 
 var cifras = ["NUMEROS", "CESAR-3", "CESAR-7", "ATBASH", "REVERSO", "POLYBIUS","MORSE", "MORSE - NUMEROS"]
-var tabelas = ["""0>5  1>6  2>7  3>8  4>9
-5>4  6>3  7>2  8>1  9>0
+var alfabetos = [{'0':0, '1':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9},
+				{"a":0, "b":1, "c":2, "d":3, "e":4,
+				"f":5, "g":6, "h":7, "i":8, "j":9,
+				"k":10, "l":11, "m":12, "n":13, "o":14,
+				"p":15, "q":16, "r":17, "s":18, "t":19,
+				"u":20, "v":21, "w":22, "x":23, "y":24, "z":25},
+				{"a":0, "b":1, "c":2, "d":3, "e":4,
+				"f":5, "g":6, "h":7, "i":8, "j":9,
+				"k":10, "l":11, "m":12, "n":12, "o":11,
+				"p":10, "q":9, "r":8, "s":7, "t":6,
+				"u":5, "v":4, "w":3, "x":2, "y":1, "z":0}]
 
-Usado com Cesar-3, Cesar-7,
-Atbash e Polybius.""",
-	"""A>X  B>Y  C>Z  D>A  E>B  F>C
-G>D  H>E  I>F  J>G  K>H
-L>I  M>J  N>K  O>L  P>M
-Q>N  R>O  S>P  T>Q  U>R
-V>S  W>T  X>U  Y>V  Z>W""",
-"""A>T  B>U  C>V  D>W  E>X  F>Y
-G>Z  H>A  I>B  J>C  K>D
-L>E  M>F  N>G  O>H  P>I
-Q>J  R>K  S>L  T>M  U>N
-V>O  W>P  X>Q  Y>R  Z>S""",
-"""A<->Z  B<->Y  C<->X  D<->W
-E<->V  F<->U  G<->T  H<->S
-I<->R  J<->Q  K<->P  L<->O  M<->N""",
-"""Cada palavra está com sua
-ordem reversa.
-Exemplo:
-'Frase exemplo -> ESARF OLPMEXE'
-""",
-"""A B C D  E    Cada letra corres-
-F G H I  J    ponde a uma coorde-
-K L M N  O    nada da tabela.
-P Q R S  T    Exemplos:
-U V W X Y/Z   CA>C. CB>H. DE>X.""",
-"""A>._    B>_...  C>_._. D>_..   E>.   F>.._.
-G>__.  H>....   I>..    J>.___ K>_._ 
-L>._..   M>__  N>_.   O>___ P>.__. 
-Q>__._  R>._.  S>...   T>_    U>.._  
-V>..._   W>.__  X>_.._ Y>_.__ Z>__..""",
-"""0>_____  1>.____  2>..___  3>...__  
-4>...._      5>.....     6>_....    7>__...  
-8>___..    9>____."""]
+var tipos = [0, 1, 1, 2, 1, 1, 1, 0]
 var cifra_atual = 0
 
 
@@ -47,7 +24,11 @@ func _ready():
 
 func set_cifra(cifra):
 	cifra_atual = cifra
-	$TabelaCifra/Label.text = tabelas[cifra]
+	for i in range(4, $TabelaCifra.get_children().size()):
+		if i == cifra_atual+4:
+			$TabelaCifra.get_child(i).visible = true
+		else:
+			$TabelaCifra.get_child(i).visible = false
 	$Cifra/Label.text = cifras[cifra]
 
 
@@ -65,3 +46,20 @@ func _on_RightCifra_button_up():
 		set_cifra(cifra_atual+1)
 	else:
 		set_cifra(0)
+
+
+func _on_LineEdit_text_changed(new_text):
+	var tabela_atual = $TabelaCifra.get_child(cifra_atual+4)
+	for i in range(tabela_atual.get_children().size()-1):
+		tabela_atual.get_child(i).set("custom_colors/font_color", Color(0.3,0.3,0.3))
+	
+	if new_text.length() == 0:
+		return
+	
+	if new_text in alfabetos[tipos[cifra_atual]]:
+		var a = alfabetos[tipos[cifra_atual]][new_text]
+		tabela_atual.get_child(a).set("custom_colors/font_color", Color(0,0,0))
+
+	elif new_text.to_lower() in alfabetos[tipos[cifra_atual]]:
+		var a = alfabetos[tipos[cifra_atual]][new_text.to_lower()]
+		tabela_atual.get_child(a).set("custom_colors/font_color", Color(0,0,0))

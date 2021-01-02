@@ -4,10 +4,13 @@ var clock_max = 30
 var intervalo = 15
 
 var modo_envio = false
+var notas = false
 var estoque_supr
 var estoque_comp
 var delta_supr
 export var delta_comp = 3
+
+var lowest_priority = -1
 
 var animacao
 var semana
@@ -38,6 +41,7 @@ func _ready():
 func _on_Menu_start_game():
 	animacao = 0
 	emit_signal("fade_in")
+	$Jukebox.play(0)
 
 
 func _on_FadeIn_done():
@@ -65,7 +69,6 @@ func _on_FadeIn_done():
 			emit_signal("title_text", "Semana " + str(semana))
 		
 		elif animacao == 2:
-			$Relogio.reset()
 			$Recebimento/Pedidos/PedidosManager.revelar_pedido()
 			$Recebimento/Pedidos/PedidosManager.revelar_pedido()
 			if semana == 0:
@@ -75,7 +78,7 @@ func _on_FadeIn_done():
 			else:
 				$NovaMensagem.wait_time = 30
 				$NovaMensagem.start()
-				$Turno.wait_time = 60*8
+				$Turno.wait_time = 60*10
 			
 			$Timer.start()
 			$Turno.start()
@@ -90,10 +93,12 @@ func _on_NovaMensagem_timeout():
 func _on_Turno_timeout():
 	passar_turno()
 
-
 # PASSAR TURNO -------------------------------------------
 func passar_turno():
 	semana += 1
+	lowest_priority = -1
+	$Relogio.reset()
+	$Timer.stop()
 	$Turno.stop()
 	
 	final = checar_final()
@@ -110,11 +115,12 @@ func passar_turno():
 		if personagem.has_method("recolher_suprimento"):
 			delta_supr += personagem.recolher_suprimento()
 	
-	atualizar_estoque(estoque_supr + delta_comp, estoque_comp + delta_supr)
+	atualizar_estoque(estoque_supr + delta_supr, estoque_comp + delta_comp)
 	
 	if semana:
 		animacao = 1
 		emit_signal("fade_in")
+		$Jukebox.play(semana)
 
 
 func eventos():
@@ -125,8 +131,15 @@ func eventos():
 	elif semana == 3 and $Personagens/Bardon.get_ordem() == "Atacar":
 		$Personagens/Hop.tarefa_feita()
 	
-	elif semana == 5 and $Personagens/Shelberg.get_ordem() == "Atacar" and $Personagens/Bardon.get_ordem() == "Atacar":
-		$Personagens/Hop.tarefa_feita()
+	elif semana == 5:
+		if $Personagens/Shelberg.get_ordem() == "Atacar" and $Personagens/Bardon.get_ordem() == "Atacar":
+			$Personagens/Hop.tarefa_feita()
+			$Personagens/Shelberg.receive_companhias(2)
+			$Personagens/Bardon.receive_companhias(2)
+		elif $Personagens/Shelberg.get_ordem() == "Atacar" and $Personagens/Bardon.get_ordem() != "Atacar":
+			$Personagens/Shelberg.receive_companhias(-2)
+		elif $Personagens/Shelberg.get_ordem() != "Atacar" and $Personagens/Bardon.get_ordem() == "Atacar":
+			$Personagens/Bardon.receive_companhias(-2)
 
 
 func checar_final():
@@ -199,6 +212,9 @@ func atualizar_estoque(suprimentos, companhias):
 
 func novo_pedido(nome, cripto, texto, prioridade):
 	$Recebimento/Pedidos/PedidosManager.novo_pedido(nome, cripto, texto, prioridade)
+	if prioridade < 0:
+		$Recebimento/Pedidos/PedidosManager.novo_pedido(nome, cripto, texto, lowest_priority)
+		lowest_priority -= 1
 
 func pedido_acessado(cripto, texto):
 	$Recebimento/Mensagem/Label.text = Codificador.codificar(texto, cripto)
@@ -211,6 +227,10 @@ func _on_Troca_button_up():
 		$Troca/Label.text = "RECEBER"
 	else:
 		$Troca/Label.text = "ENVIO"
+
+func _on_Notas_button_up():
+	$Recebimento.visible = !modo_envio
+	$Envio.visible = modo_envio
 
 
 func _on_PainelTexto_envio_mensagem(nome_atual, msg_atual):
@@ -227,10 +247,12 @@ func _on_PainelTexto_envio_recursos(nome_atual, suprimentos, companhias):
 
 # PAUSE MENU -----------------------------
 func _on_Pausar_button_up():
+	Audio.set_pause_music(true)
 	get_tree().paused = true
 	$AnimationPlayer.play("PauseMenu")
 
 func _on_Continuar_button_up():
+	Audio.set_pause_music(false)
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("PauseMenu")
 
@@ -244,3 +266,10 @@ func _on_Sair_button_up():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "PauseMenu" and get_tree().paused == true:
 		Audio.play_sound(Audio.pause)
+
+
+func _on_Notas_clicked(active):
+	if active:
+		$AnimationPlayer.play("Notas")
+	else:
+		$AnimationPlayer.play_backwards("Notas")

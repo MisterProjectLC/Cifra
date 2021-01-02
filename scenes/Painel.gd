@@ -18,7 +18,7 @@ var explicacao = {"Nulo":"", "Atacar":"[Perde soldados, avanca posicao.]",
 						"Recuar":"[Evita perdas, perde posicao.]",
 						"Saquear":"[Perde soldados, mas base não precisa de recursos este turno.]",
 						"Aviso":"[\"Eu sei que você é o traidor. Fuja. Laurson te procura.\"]",
-						"Insistir":"[\"Insiste na mensagem que enviou neste dia.\"]",
+						"Insistir":"[Insiste na mensagem que enviou neste dia.]",
 						"Amor":"[\"Eu sei de seu amor secreto.\"]"}
 var msg_atual = 0
 
@@ -88,12 +88,14 @@ func atualizar_dados(new_r, new_d):
 # BOTOES ----------------------------------------
 # Mensagens
 func _on_AntMensagem_button_up():
+	Audio.play_sound(Audio.button2)
 	if msg_atual <= 0:
 		atualizar_mensagem(opcoes.size()-1)
 	else:
 		atualizar_mensagem(msg_atual-1)
 
 func _on_ProxMensagem_button_up():
+	Audio.play_sound(Audio.button2)
 	if msg_atual >= opcoes.size()-1:
 		atualizar_mensagem(0)
 	else:
@@ -101,23 +103,29 @@ func _on_ProxMensagem_button_up():
 
 # Racoes
 func _on_MenosRacao_button_up():
+	Audio.play_sound(Audio.button2)
 	atualizar_dados(suprimentos-1, companhias)
 
 func _on_MaisRacao_button_up():
+	Audio.play_sound(Audio.button2)
 	atualizar_dados(suprimentos+1, companhias)
 
 # Destacamentos
 func _on_MenosDestac_button_up():
+	Audio.play_sound(Audio.button2)
 	atualizar_dados(suprimentos, companhias-1)
 
 func _on_MaisDestac_button_up():
+	Audio.play_sound(Audio.button2)
 	atualizar_dados(suprimentos, companhias+1)
 
 # Enviar
 func _on_EnviarRecursos_button_up():
+	Audio.play_sound(Audio.button2)
 	emit_signal("envio_recursos", nome_atual, suprimentos, companhias)
 	atualizar_dados(0, 0)
 
 func _on_EnviarMensagem_button_up():
+	Audio.play_sound(Audio.button2)
 	emit_signal("envio_mensagem", nome_atual, opcoes[msg_atual])
 	atualizar_mensagem(0)

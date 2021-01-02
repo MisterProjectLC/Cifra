@@ -1,6 +1,7 @@
 extends "Soldado.gd"
 
 var introducao = false
+var amor = false
 
 func tomar_acoes():
 	if _suprimentos < _companhias and _companhias < 2:
@@ -27,8 +28,9 @@ func enviar_mensagens():
 func receive_message(message):
 	.receive_message(message)
 	
-	if message == "Amor":
-		enviar_pedido(("Amor...? Voce e um idiota, sabia? Cala a boca."), 0)
+	if message == "Amor" and !amor:
+		enviar_pedido(("Amor...? Voce e um idiota, sabia? Cala a boca."), -1)
+		amor = true
 	
 	else:
 		_ordem = message
