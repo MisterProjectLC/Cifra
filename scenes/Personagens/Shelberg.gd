@@ -7,7 +7,7 @@ signal denuncia
 
 
 func enviar_mensagens():
-	if turno >= 4 and _companhias <= 2 and !bolado:
+	if turno >= 4 and _companhias == 1 and !bolado:
 		enviar_pedido(("Socorro! SOCORRO! Envie mais homens! Pelo amor de DEUS, envie mais HOMENS!"), 10, "nada")
 		bolado = true
 	elif _ordem == "Atacar" and !atacou:
@@ -22,7 +22,7 @@ func enviar_mensagens():
 		if _suprimentos < _companhias:
 			enviar_pedido(("Nao ouviu? SUPRIMENTOS! Eu sou RICARDO SHELBERG!"), 4)
 		else:
-			enviar_pedido(("Patriota, envie mais homens! Sozinho, venco essa guerra!"), 2)
+			enviar_pedido(("Patriota, envie mais homens! Sozinho, venco esta guerra!"), 2)
 		
 	elif turno == 4:
 		if _suprimentos < _companhias:
@@ -36,15 +36,25 @@ func enviar_mensagens():
 				enviar_pedido(("Faca Heimzuck sangrar! Mande-nos avancar!"), 1)
 	
 	elif turno == 5:
+		if _suprimentos < _companhias:
+			if !bolado:
+				enviar_pedido(("Patriota, eu preciso de racoes, armas, medicamentos! Envie " + 
+				str(2*_companhias-_suprimentos) + "!"), 1)
+			else:
+				enviar_pedido(("Eu preciso de RACOES. ARMAS. MEDICAMENTOS. Envie tudo o que tiver!"), 1)
+		
 		if _companhias > 2 and _companhias < 7 and !bolado:
 			enviar_pedido(("Como vamos vencer sem soldados? Patriota, " + str(7-_companhias) +
-					" companhias!"), 1)
+					" companhias de homens bem treinados!"), 1)
+		
 	
 	elif turno == 6:
 		if bolado:
 			enviar_pedido(("EU SOU SHELBERG! RICARDO SHELBERG! MEU NOME NAO VALE NADA? MANDE. TUDO!"), 10, "nada")
 		elif _progresso == 2:
-			enviar_pedido("Patriota, estamos na porta de Toulann! VAMOS AVANCAR!!", 10)
+			enviar_pedido("Patriota, estamos na porta de Toulann! MANDE TUDO E VAMOS AVANCAR!!", 10)
+		else:
+			enviar_pedido("Nao vejo Toulann... Droga! Nao avance ainda! Eu quero estar la!", 10)
 
 
 func receive_message(message):
@@ -52,7 +62,7 @@ func receive_message(message):
 	if message == "Atacar":
 		if bolado:
 			enviar_pedido(("Nao! Ainda... Ainda nao e a hora de atacar!"), -1, "nada")
-		else:
+		elif !atacou:
 			enviar_pedido(("Finalmente mais acao! Essa semana, avancaremos!!!"), -1)
 			_ordem = message
 	

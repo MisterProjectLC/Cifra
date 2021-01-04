@@ -268,7 +268,8 @@ script = ExtResource( 18 )
 nome = "Mish"
 criptografia = "cesar7"
 base = NodePath("../../Envio/Bases/Endesburg")
-_companhias = 4
+_suprimentos = 17
+_companhias = 6
 _supr_tabela = [ 0, 2, 3, 4 ]
 local = "Endesburg"
 
@@ -279,7 +280,7 @@ criptografia = "atbash"
 base = NodePath("../../Envio/Bases/Sungarden")
 _suprimentos = 16
 _companhias = 6
-_supr_tabela = [ 0, 3, 4, 5 ]
+_supr_tabela = [ 0, 2, 4, 5 ]
 local = "Sungarden"
 
 [node name="Laurson" type="Node" parent="Main/Personagens"]
@@ -1948,10 +1949,10 @@ __meta__ = {
 [node name="LineEdit2" type="LineEdit" parent="Main/Recebimento/TabelaCifra/MORSE"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 424.896
-margin_top = 8.47113
-margin_right = -13.1041
-margin_bottom = -171.529
+margin_left = 424.572
+margin_top = 13.9712
+margin_right = -13.4274
+margin_bottom = -166.029
 custom_fonts/font = SubResource( 2 )
 max_length = 1
 context_menu_enabled = false
@@ -2526,10 +2527,10 @@ margin_bottom = 402.0
 color = Color( 0.152941, 0.152941, 0.152941, 1 )
 
 [node name="Detail5" type="TextureRect" parent="Main/CloseRight"]
-margin_left = 27.9575
-margin_top = 730.528
-margin_right = 82.9575
-margin_bottom = 783.528
+margin_left = 49.3392
+margin_top = 729.236
+margin_right = 104.339
+margin_bottom = 782.236
 texture = ExtResource( 9 )
 __meta__ = {
 "_edit_lock_": true,
@@ -2537,10 +2538,10 @@ __meta__ = {
 }
 
 [node name="Detail6" type="TextureRect" parent="Main/CloseRight"]
-margin_left = 29.2181
-margin_top = 17.7963
-margin_right = 84.2181
-margin_bottom = 70.7963
+margin_left = 50.5998
+margin_top = 16.5039
+margin_right = 105.6
+margin_bottom = 69.5039
 texture = ExtResource( 9 )
 __meta__ = {
 "_edit_lock_": true,
@@ -2809,7 +2810,7 @@ anims/Titulo = SubResource( 13 )
 [connection signal="denuncia" from="Main/Personagens/Shelberg" to="Main" method="_on_Shelberg_denuncia"]
 [connection signal="escape" from="Main/Personagens/Mish" to="Main" method="_on_Mish_escape"]
 [connection signal="add_opcao" from="Main/Personagens/Laurson" to="Main" method="add_option"]
-[connection signal="substituicao" from="Main/Personagens/Laurson" to="Main" method="spawn_goller"]
+[connection signal="substituicao" from="Main/Personagens/Laurson" to="Main" method="_on_Laurson_substituicao"]
 [connection signal="pedido_acessado" from="Main/Recebimento/Pedidos/PedidosManager" to="Main" method="pedido_acessado"]
 [connection signal="text_changed" from="Main/Recebimento/TabelaCifra/NUMEROS/LineEdit" to="Main/Recebimento" method="_on_LineEdit_text_changed"]
 [connection signal="text_changed" from="Main/Recebimento/TabelaCifra/CESAR-3/LineEdit2" to="Main/Recebimento" method="_on_LineEdit_text_changed"]

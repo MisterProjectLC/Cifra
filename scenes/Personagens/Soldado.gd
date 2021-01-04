@@ -92,6 +92,9 @@ func get_progresso():
 func get_ordem():
 	return _ordem
 
+func get_existente():
+	return _existente
+
 func received_message():
 	return _message_received
 
@@ -107,5 +110,7 @@ func fim():
 func recolher_suprimento():
 	if _progresso < 0:
 		return _supr_tabela[0]
-	else:
+	elif _progresso < 3:
 		return _supr_tabela[_progresso+1]
+	else:
+		return 0

@@ -84,7 +84,13 @@ func base_caiu(local):
 func fazer_tarefa():
 	tarefa_feita = true
 
+func get_ataque_duplo():
+	return tera_ataque_duplo
 
-func enviar_goller():
-	enviar_pedido(("Recebemos a noticia sobre o Traidor. Enviarei Ashley Goller, uma das nossas " +
-	"melhores, como substituta."), 100)
+func enviar_goller(escapou):
+	if escapou:
+		enviar_pedido(("Recebemos a noticia sobre o sumico de Mish. Enviarei Ashley Goller, uma das nossas " +
+			"melhores, para substituir."), 100)
+	else:
+		enviar_pedido(("Recebemos a noticia sobre o Traidor. Enviarei Ashley Goller, uma das nossas " +
+			"melhores, para substituir."), 100)

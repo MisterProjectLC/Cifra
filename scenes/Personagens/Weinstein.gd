@@ -46,7 +46,7 @@ func enviar_mensagens():
 		enviar_pedido(("Pedido para " + str(max(2, 2+ (2*_companhias-_suprimentos))) + " suprimentos. " +
 							"Este inverno esta especialmente rigoroso."), 1)
 		if _companhias <= 2:
-			enviar_pedido("Duas companhias, por favor.", 2)
+			enviar_pedido("Despache duas companhias, por favor.", 2)
 	
 	elif turno == 4:
 		var ok = true
@@ -73,7 +73,7 @@ func enviar_mensagens():
 				enviar_pedido(("Pedido para " + str(2*_companhias-_suprimentos) + " suprimentos."), 3)
 		
 		if _companhias <= 2:
-			enviar_pedido("Requisitando reforcos para Lonpris.", 2)
+			enviar_pedido("Requisitando reforcos para Lonpris. Dois, no minimo.", 2)
 	
 	elif turno == 6:
 		if _progresso == 2 and odio < 3:
@@ -97,7 +97,8 @@ func receive_message(message):
 					"Mas eu nao iria trair o pais desse jeito."), -1)
 			odio += 3
 		else:
-			enviar_pedido(("Heh, nao, nao sou o traidor. Mas obrigado, de qualquer forma."), -1)
+			enviar_pedido(("Heh, nao, nao sou esse Traidor que voce procura, mas entendo " + 
+			"porque pensaria isso. Obrigado, de qualquer forma."), -1)
 	
 	elif message == "Amor" and !amor:
 		if odio >= 3:
@@ -105,7 +106,8 @@ func receive_message(message):
 			"nao fale sobre isso para ninguem. Eles podem me prender, ou... pior."), -1)
 		else:
 			enviar_pedido(("Ah. Entao voce sabe... Sim, antes da guerra, eu morava em Heimzuck " +
-			"com minha esposa. Agora... honestamente, eu nao sei o que fazer."), -1)
+			"com minha esposa. Agora... honestamente, eu nao sei o que fazer. Nenhum dos lados " +
+			"parece justo para mim. De qualquer forma, eu continuo aqui."), -1)
 		amor = true
 	
 	elif message == "Insistir":

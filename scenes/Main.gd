@@ -19,6 +19,7 @@ var final
 var escaped
 var denuncia
 var incompetente
+var substituido
 
 export(PackedScene) var goller
 
@@ -38,6 +39,7 @@ func _ready():
 	escaped = false
 	denuncia = false
 	incompetente = false
+	substituido = ""
 	atualizar_estoque(0, 0)
 	passar_turno()
 	atualizar_estoque(0, 0)
@@ -54,7 +56,8 @@ func _on_FadeIn_done():
 		if animacao == 0:
 			animacao = 1
 			emit_signal("play_speed", 0.6)
-			emit_signal("text", Parser.load_file("finais")[final])
+			var texto_final = Parser.load_file("finais")[final]
+			emit_signal("text", texto_final)
 		
 		elif animacao == 1:
 			animacao = 2
@@ -158,6 +161,10 @@ func passar_turno():
 
 
 func eventos():
+	if substituido != "":
+		spawn_goller(substituido)
+		substituido = ""
+	
 	if semana == 1:
 		if $Personagens/Weinstein.get_ordem() != "Recuar":
 			$Personagens/Weinstein.receive_companhias(-2)
@@ -166,9 +173,13 @@ func eventos():
 		$Personagens/Hop.fazer_tarefa()
 	
 	elif semana == 3 and $Personagens/Bardon.get_ordem() == "Atacar":
-		$Personagens/Hop.fazer_tarefa()
+		if $Personagens/Mish.get_aviso_ataque():
+			print_debug("PANOS")
+			$Personagens/Bardon.ataque_falho()
+		else:
+			$Personagens/Hop.fazer_tarefa()
 	
-	elif semana == 5:
+	elif semana == 5 and $Personagens/Hop.get_ataque_duplo():
 		if $Personagens/Shelberg.get_ordem() == "Atacar" and $Personagens/Bardon.get_ordem() == "Atacar":
 			$Personagens/Hop.fazer_tarefa()
 			$Personagens/Shelberg.receive_companhias(2)
@@ -228,10 +239,7 @@ func checar_final():
 func spawn_goller(alvo):
 	$Envio/Painel/PainelTexto.remove_option("Aviso")
 	$Personagens/Laurson.traidor_saiu()
-	if escaped:
-		return
-		
-	$Personagens/Hop.enviar_goller()
+	
 	var base
 	# Encontrar base e deletar antigo
 	for child in $Envio/Bases.get_children():
@@ -239,9 +247,13 @@ func spawn_goller(alvo):
 			base = child
 			for personagem in $Personagens.get_children():
 				if personagem.get_nome() == base.get_nome():
+					var caiu = !personagem.get_existente()
 					personagem.queue_free()
+					if caiu:
+						return
 	
 	# Spawnar Goller
+	$Personagens/Hop.enviar_goller(escaped)
 	var new = goller.instance()
 	$Personagens.add_child(new)
 	new.connect("enviar_pedido", self, "novo_pedido")
@@ -260,10 +272,14 @@ func morte(local):
 	$Personagens/Laurson.base_caiu(local)
 
 func _on_Mish_escape():
-	spawn_goller("Mish")
+	substituido = "Mish"
 	escaped = true
 	$Personagens/Bardon.sos()
 	$Personagens/Laurson.sos()
+
+func _on_Laurson_substituicao(nome):
+	if !escaped:
+		substituido = nome
 
 func _on_Shelberg_denuncia():
 	denuncia = true
@@ -345,7 +361,8 @@ func _on_Continuar_button_up():
 	$AnimationPlayer.play_backwards("PauseMenu")
 
 func _on_Menu_button_up():
-	get_tree().change_scene("res://scenes/Main.tscn")
+	_on_Continuar_button_up()
+	get_tree().reload_current_scene()
 
 func _on_Sair_button_up():
 	get_tree().quit()

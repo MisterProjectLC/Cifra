@@ -6,10 +6,20 @@ var amor = false
 var tentou_atacar = false
 var tentou_saquear = false
 var atacou = false
+var emboscado = false
 var sos = false
 
+func ataque_falho():
+	emboscado = true
+
 func enviar_mensagens():
-	if _ordem == "Atacar" and !atacou:
+	if emboscado:
+		enviar_pedido(("De alguma forma, o inimigo ja sabia do nosso ataque. Nao conseguimos tomar a posicao."), 10)
+		_progresso -= 1
+		atacou = true
+		emboscado = false
+		
+	elif _ordem == "Atacar" and !atacou:
 		enviar_pedido(("Nao tivemos tantas baixas quanto esperado, mas... nao consegui salvar todos."), 1)
 		atacou = true
 	
@@ -62,7 +72,7 @@ func enviar_mensagens():
 	elif turno == 6:
 		if _progresso == 2:
 			enviar_pedido(("Estou vendo os avioes em Toulann. Normalmente eu seria contra, mas... Se for " +
-			"necessario, eu posso atacar. Preciso impedir o bombardeio."), 4)
+			"necessario, eu posso atacar. So de a ordem e envie o que puder."), 4)
 		else:
 			enviar_pedido(("Sofremos uma emboscada! Envie mais companhias, por favor!"), 4)
 
@@ -116,7 +126,7 @@ func receive_message(message):
 			return
 		amor = true
 		
-		if enviado == 2:
+		if enviado >= 2:
 			enviar_pedido(("...Escuta. Eu conheco o Ken... desde ha muito tempo. E... sim, " +
 			"eu admito. Existem momentos... em que percebo... que eu... eu... eu amo ele."), -1)
 		else:

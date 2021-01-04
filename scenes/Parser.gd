@@ -3,7 +3,7 @@ extends Node
 func load_file(file_name):
 	var file = File.new()
 	if not file.file_exists("res://files/" + file_name + ".txt"):
-		print("MANO SE VC TA VENDO ESSE ERRO É PQ O GODOT É CORNO, MANDA MENSAGEM PRO DANILO")
+		#print("MANO SE VC TA VENDO ESSE ERRO É PQ O GODOT É CORNO, MANDA MENSAGEM PRO DANILO")
 		return
 
 	file.open("res://files/" + file_name + ".txt", File.READ)

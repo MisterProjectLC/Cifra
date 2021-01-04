@@ -14,6 +14,7 @@ func enviar_mensagens():
 	if !introducao:
 		enviar_pedido("Saudacoes. Sou Ashley Goller. Vim substituir o antigo comandante. " +
 		"Envie tudo o que eu precise e eu vencerei esta guerra.", 10)
+		_progresso += 1
 		introducao = true
 	
 	elif saqueou == 1:
