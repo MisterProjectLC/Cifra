@@ -1,4 +1,4 @@
-extends ColorRect
+extends Control
 
 var clock = 0
 
@@ -6,7 +6,7 @@ var clock = 0
 func relogio():
 	clock += 1
 	# Horas
-	var horas = 10 + clock/60
+	var horas = 8 + clock/60
 	if horas < 10:
 		$Label.text = "0"
 	else:

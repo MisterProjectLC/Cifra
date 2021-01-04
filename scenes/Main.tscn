@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Retangulo.tscn" type="PackedScene" id=2]
@@ -31,32 +31,55 @@
 [ext_resource path="res://scenes/Relogio.gd" type="Script" id=29]
 [ext_resource path="res://assets/Music/Moonlight Serenade.ogg" type="AudioStream" id=30]
 [ext_resource path="res://assets/Music/Body-And-Soul-Coleman-Hawkins-and-his-Orchestra.ogg" type="AudioStream" id=31]
-[ext_resource path="res://assets/Music/Sleepy-Lagoon-Harry-James-and-his-Orchestra.ogg" type="AudioStream" id=32]
+[ext_resource path="res://assets/Music/I Hear a Rhapsody.ogg" type="AudioStream" id=32]
 [ext_resource path="res://assets/Music/PIANO-CONCERTO-IN-B-FLAT-Freddy-Martin-and-his-Orchestra.ogg" type="AudioStream" id=33]
-[ext_resource path="res://assets/Music/We_ll-Meet-Again.ogg" type="AudioStream" id=34]
+[ext_resource path="res://assets/Music/Blue Flame - Woody Herman and his Orchestra.ogg" type="AudioStream" id=34]
+[ext_resource path="res://assets/Music/Bumble Boogie - Freddy Martin and his Orchestra.ogg" type="AudioStream" id=35]
+[ext_resource path="res://assets/Music/Velvet Moon - Harry James and his Orchestra.ogg" type="AudioStream" id=36]
+[ext_resource path="res://assets/Music/Leap Frog - Les Brown and his Orchestra - Corday.ogg" type="AudioStream" id=37]
+[ext_resource path="res://assets/Music/Tippin' In - Erskine Hawkins and his Orchestra.ogg" type="AudioStream" id=38]
+[ext_resource path="res://assets/Music/___01_Grieg Piano Concerto - Freddy Martin and his Orchestra.ogg" type="AudioStream" id=39]
+[ext_resource path="res://assets/Music/Tuxedo Junction - Glenn Miller and his Orchestra.ogg" type="AudioStream" id=40]
+[ext_resource path="res://assets/Music/Don’t Get Around Much Anymore - Duke Ellington.ogg" type="AudioStream" id=41]
+[ext_resource path="res://assets/Music/We_ll-Meet-Again.ogg" type="AudioStream" id=42]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=12]
-size = 20
-use_filter = true
-font_data = ExtResource( 3 )
-
 [sub_resource type="DynamicFont" id=2]
-size = 60
+size = 20
 use_filter = true
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
+size = 60
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
 size = 20
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "Notas"
+[sub_resource type="Animation" id=5]
+resource_name = "Lightning"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Lightning:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Notas:rect_position")
@@ -71,7 +94,7 @@ tracks/0/keys = {
 "values": [ Vector2( -366.976, 75 ), Vector2( 20, 75 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("CloseLeft:rect_position")
@@ -98,22 +121,22 @@ tracks/1/keys = {
 "values": [ Vector2( 2012.84, 1 ), Vector2( 595, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=8]
 size = 90
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=9]
 size = 50
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=10]
 size = 40
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
 tracks/0/interp = 1
@@ -127,7 +150,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=12]
 length = 8.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Texto:modulate")
@@ -142,7 +165,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=13]
 length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Titulo:modulate")
@@ -190,6 +213,7 @@ margin_bottom = 0.0
 color = Color( 0.360784, 0.360784, 0.360784, 1 )
 
 [node name="Main" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -202,7 +226,10 @@ goller = ExtResource( 13 )
 
 [node name="Jukebox" type="Node" parent="Main"]
 script = ExtResource( 24 )
-game_themes = [ [ ExtResource( 25 ) ], [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 26 ) ], [ ExtResource( 26 ), ExtResource( 31 ), ExtResource( 28 ) ], [ ExtResource( 30 ) ], [ ExtResource( 32 ) ], [ ExtResource( 25 ) ], [ ExtResource( 30 ), ExtResource( 33 ), ExtResource( 34 ) ] ]
+game_themes = [ [ ExtResource( 25 ) ], [ ExtResource( 27 ), ExtResource( 36 ), ExtResource( 34 ), ExtResource( 35 ) ], [ ExtResource( 28 ), ExtResource( 36 ), ExtResource( 41 ), ExtResource( 37 ) ], [ ExtResource( 32 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 39 ) ], [ ExtResource( 38 ), ExtResource( 40 ), ExtResource( 25 ), ExtResource( 35 ) ], [ ExtResource( 26 ), ExtResource( 28 ), ExtResource( 34 ), ExtResource( 26 ) ], [ ExtResource( 33 ) ] ]
+wellmeetagain = ExtResource( 42 )
+
+[node name="Thunder" type="Timer" parent="Main"]
 
 [node name="Timer" type="Timer" parent="Main"]
 
@@ -222,7 +249,7 @@ nome = "General Hop"
 script = ExtResource( 15 )
 criptografia = "reverso"
 base = NodePath("../../Envio/Bases/Lonpris")
-_suprimentos = 12
+_suprimentos = 18
 _supr_tabela = [ 0, 1, 2, 3 ]
 local = " Lonpris"
 
@@ -231,7 +258,7 @@ script = ExtResource( 14 )
 nome = "Shelberg"
 criptografia = "polybius"
 base = NodePath("../../Envio/Bases/Arnheim")
-_suprimentos = 16
+_suprimentos = 18
 _companhias = 6
 _supr_tabela = [ 0, 2, 3, 4 ]
 local = "Arnheim"
@@ -250,7 +277,7 @@ script = ExtResource( 19 )
 nome = "Bardon"
 criptografia = "atbash"
 base = NodePath("../../Envio/Bases/Sungarden")
-_suprimentos = 13
+_suprimentos = 16
 _companhias = 6
 _supr_tabela = [ 0, 3, 4, 5 ]
 local = "Sungarden"
@@ -500,7 +527,7 @@ margin_left = 424.296
 margin_top = 13.769
 margin_right = -13.7043
 margin_bottom = -166.231
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 2 )
 max_length = 1
 context_menu_enabled = false
 clear_button_enabled = true
@@ -889,7 +916,7 @@ margin_left = 424.296
 margin_top = 13.769
 margin_right = -13.7043
 margin_bottom = -166.231
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 2 )
 max_length = 1
 context_menu_enabled = false
 clear_button_enabled = true
@@ -1278,7 +1305,7 @@ margin_left = 424.296
 margin_top = 13.769
 margin_right = -13.7043
 margin_bottom = -166.231
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 2 )
 max_length = 1
 context_menu_enabled = false
 clear_button_enabled = true
@@ -1485,7 +1512,7 @@ margin_left = 424.296
 margin_top = 13.769
 margin_right = -13.7043
 margin_bottom = -166.231
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 2 )
 max_length = 1
 context_menu_enabled = false
 clear_button_enabled = true
@@ -1563,7 +1590,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "A>.__"
+text = "A<._"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1577,7 +1604,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "B>_..."
+text = "B<_..."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1591,7 +1618,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "C>_._."
+text = "C<_._."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1605,7 +1632,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "D>_.."
+text = "D<_.."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1619,7 +1646,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "E>."
+text = "E<."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1633,7 +1660,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "F>.._."
+text = "F<.._."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1647,7 +1674,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "G>__."
+text = "G<__."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1661,7 +1688,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "H>...."
+text = "H<...."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1675,7 +1702,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "I>.."
+text = "I<.."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1689,7 +1716,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "J>.___"
+text = "J<.___"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1703,7 +1730,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "K>_._"
+text = "K<_._"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1717,7 +1744,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "L>._.."
+text = "L<._.."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1731,7 +1758,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "M>__"
+text = "M<__"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1745,7 +1772,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "N>_."
+text = "N<_."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1759,7 +1786,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "O>___"
+text = "O<___"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1773,7 +1800,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "P>.__."
+text = "P<.__."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1787,7 +1814,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Q>__._"
+text = "Q<__._"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1801,7 +1828,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "R>._."
+text = "R<._."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1815,7 +1842,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "S>..."
+text = "S<..."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1829,7 +1856,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "T>_"
+text = "T<_"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1843,7 +1870,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "U>.._"
+text = "U<.._"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1857,7 +1884,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "V>..._"
+text = "V<..._"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1871,7 +1898,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "W>.__"
+text = "W<.__"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1885,7 +1912,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "X>_.._"
+text = "X<_.._"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1899,7 +1926,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Y>_.__"
+text = "Y<_.__"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1913,7 +1940,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Z>__.."
+text = "Z<__.."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1925,7 +1952,7 @@ margin_left = 424.896
 margin_top = 8.47113
 margin_right = -13.1041
 margin_bottom = -171.529
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 2 )
 max_length = 1
 context_menu_enabled = false
 clear_button_enabled = true
@@ -1952,7 +1979,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "0>_____"
+text = "0<_____"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1966,7 +1993,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "1>.____"
+text = "1<.____"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1980,7 +2007,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "2>..___"
+text = "2<..___"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1994,7 +2021,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "3>...__"
+text = "3<...__"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2008,7 +2035,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "4>...._"
+text = "4<...._"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2022,7 +2049,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "5>....."
+text = "5<....."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2036,7 +2063,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "6>_...."
+text = "6<_...."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2050,7 +2077,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "7>__..."
+text = "7<__..."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2064,7 +2091,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "8>___.."
+text = "8<___.."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2078,7 +2105,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "9>____."
+text = "9<____."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2090,7 +2117,7 @@ margin_left = 424.296
 margin_top = 13.769
 margin_right = -13.7043
 margin_bottom = -166.231
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 2 )
 max_length = 1
 context_menu_enabled = false
 clear_button_enabled = true
@@ -2126,7 +2153,7 @@ margin_right = 39.1614
 margin_bottom = 36.1406
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.541176, 0.545098, 0.564706, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "<"
@@ -2190,7 +2217,7 @@ margin_right = 39.1614
 margin_bottom = 36.1406
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.541176, 0.545098, 0.564706, 1 )
 text = ">"
 align = 1
@@ -2310,17 +2337,24 @@ margin_top = 284.0
 margin_right = 253.143
 margin_bottom = 337.0
 color = Color( 0.988235, 0.909804, 0.772549, 1 )
-script = ExtResource( 29 )
 
-[node name="Label" type="Label" parent="Main/Relogio"]
+[node name="Relogio" type="Control" parent="Main/Relogio"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Main/Relogio/Relogio"]
 anchor_left = 0.456835
 anchor_top = 0.386792
 anchor_right = 0.543165
 anchor_bottom = 0.613208
-margin_left = -22.8017
-margin_top = -10.5
-margin_right = 24.1983
-margin_bottom = 10.5
+margin_left = 20.4249
+margin_top = -8.47168
+margin_right = 86.9717
+margin_bottom = 21.4717
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
@@ -2332,7 +2366,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Reveal" type="ColorRect" parent="Main/Relogio"]
+[node name="Reveal" type="ColorRect" parent="Main/Relogio/Relogio"]
 margin_left = 3.0
 margin_top = 3.0
 margin_right = 143.0
@@ -2360,12 +2394,10 @@ margin_bottom = 336.0
 label = "PAUSA"
 
 [node name="Notas" type="ColorRect" parent="Main"]
-anchor_left = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1468.65
+margin_left = -366.976
 margin_top = 75.0
-margin_right = -1054.65
+margin_right = 47.024
 margin_bottom = -152.0
 color = Color( 0.980392, 0.92549, 0.831373, 1 )
 script = ExtResource( 6 )
@@ -2409,7 +2441,7 @@ margin_left = 14.0
 margin_top = 87.2599
 margin_right = 349.0
 margin_bottom = 237.26
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2419,7 +2451,7 @@ margin_left = 12.9
 margin_top = 243.104
 margin_right = 349.9
 margin_bottom = 402.104
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2429,7 +2461,7 @@ margin_left = 12.9
 margin_top = 408.104
 margin_right = 349.9
 margin_bottom = 550.104
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2517,11 +2549,21 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Main"]
 pause_mode = 2
-anims/Notas = SubResource( 4 )
-anims/PauseMenu = SubResource( 5 )
+anims/Lightning = SubResource( 5 )
+anims/Notas = SubResource( 6 )
+anims/PauseMenu = SubResource( 7 )
+
+[node name="Lightning" type="ColorRect" parent="Main"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
 
 [node name="Menu" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 21 )
@@ -2545,7 +2587,7 @@ margin_right = 368.948
 margin_bottom = 134.584
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Cifra"
 autowrap = true
@@ -2619,7 +2661,7 @@ margin_left = 95.5854
 margin_top = 82.4284
 margin_right = 351.585
 margin_bottom = 137.428
-value = 50.0
+value = 80.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2720,7 +2762,7 @@ margin_right = 286.051
 margin_bottom = 128.321
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 align = 1
 valign = 1
 autowrap = true
@@ -2741,7 +2783,7 @@ margin_right = 401.48
 margin_bottom = 176.884
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 10 )
 align = 1
 autowrap = true
 __meta__ = {
@@ -2750,17 +2792,20 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FadeIn"]
-anims/FadeIn = SubResource( 9 )
-anims/Texto = SubResource( 10 )
-anims/Titulo = SubResource( 11 )
+anims/FadeIn = SubResource( 11 )
+anims/Texto = SubResource( 12 )
+anims/Titulo = SubResource( 13 )
 [connection signal="fade_in" from="Main" to="FadeIn" method="fade_in"]
+[connection signal="play_speed" from="Main" to="FadeIn" method="set_speed_scale"]
 [connection signal="text" from="Main" to="FadeIn" method="text"]
 [connection signal="title_text" from="Main" to="FadeIn" method="title_text"]
+[connection signal="timeout" from="Main/Thunder" to="Main" method="_on_Thunder_timeout"]
 [connection signal="timeout" from="Main/Timer" to="Main" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Main/NovaMensagem" to="Main" method="_on_NovaMensagem_timeout"]
 [connection signal="timeout" from="Main/Turno" to="Main" method="_on_Turno_timeout"]
 [connection signal="incompetente" from="Main/Personagens/Hop" to="Main" method="_on_Hop_incompetente"]
 [connection signal="abastecido" from="Main/Personagens/Weinstein" to="Main" method="_on_Weinstein_abastecido"]
+[connection signal="disco" from="Main/Personagens/Weinstein" to="Main" method="_on_Weinstein_disco"]
 [connection signal="denuncia" from="Main/Personagens/Shelberg" to="Main" method="_on_Shelberg_denuncia"]
 [connection signal="escape" from="Main/Personagens/Mish" to="Main" method="_on_Mish_escape"]
 [connection signal="add_opcao" from="Main/Personagens/Laurson" to="Main" method="add_option"]
@@ -2782,8 +2827,8 @@ anims/Titulo = SubResource( 11 )
 [connection signal="envio_mensagem" from="Main/Envio/Painel/PainelTexto" to="Main" method="_on_PainelTexto_envio_mensagem"]
 [connection signal="envio_recursos" from="Main/Envio/Painel/PainelTexto" to="Main" method="_on_PainelTexto_envio_recursos"]
 [connection signal="button_up" from="Main/Troca" to="Main" method="_on_Troca_button_up"]
-[connection signal="mouse_entered" from="Main/Relogio/Reveal" to="Main/Relogio/Reveal" method="_on_Notas_mouse_entered"]
-[connection signal="mouse_exited" from="Main/Relogio/Reveal" to="Main/Relogio/Reveal" method="_on_Notas_mouse_exited"]
+[connection signal="mouse_entered" from="Main/Relogio/Relogio/Reveal" to="Main/Relogio/Relogio/Reveal" method="_on_Notas_mouse_entered"]
+[connection signal="mouse_exited" from="Main/Relogio/Relogio/Reveal" to="Main/Relogio/Relogio/Reveal" method="_on_Notas_mouse_exited"]
 [connection signal="button_up" from="Main/Encerrar" to="Main" method="_on_Encerrar_button_up"]
 [connection signal="button_up" from="Main/Pausar" to="Main" method="_on_Pausar_button_up"]
 [connection signal="clicked" from="Main/Notas" to="Main" method="_on_Notas_clicked"]

@@ -1,5 +1,35 @@
-A guerra nao acabou ainda.
-To titi.
+Sob a luz do amanhecer, soldados oumerianos marcharam sobre Toulann, capital regional de Heimzuck.
+Mal houve tempo para os aviões decolarem - com um ataque cirúrgico e decisivo, Toulann desmontou como um castelo de cartas.
+O flanco norte, por fim, estava assegurado. A guerra continuaria por pelo menos mais dois anos - mas sem seu território norte, Heimzuck estava fadada a cair...
+"Por Oumer! Pela liberdade!"
+#
+Sob a luz do amanhecer, soldados oumerianos marcharam sobre Toulann, capital regional de Heimzuck.
+Mal houve tempo para os aviões decolarem - com um ataque cirúrgico e decisivo, Toulann desmontou como um castelo de cartas.
+O flanco norte, por fim, estava assegurado. A guerra continuaria por pelo menos mais três anos; porém, sem seu território norte, Heimzuck estava fadada a cair...
+...com você, junto. Não demorou muito para oficiais de Oumer descobrirem sobre a morte de Laurson, e o escape de Isaac Mish. Ficou claro quem o apoiou em sua operação.
+Três dias depois, você estava de costas para a parede - e de frente para um pelotão de fuzilamento.
+"Por Oumer! Pela liberdade!"
+#
+De região em região, o fronte oumeriano desmoronou sob as forças de Heimzuck.
+Livros de história futuramente atribuiriam as derrotas a problemas logísticos e de comunicação: suprimentos não foram enviados, e ordens não foram passadas.
+Quando as tropas chegaram à sua torre, não havia muito a se fazer. Por procedimento padrão, você apagou todas as tabelas de descriptografia... e esperou.
+"Depois das cinzas, levanta a Fenix."
+#
+De região em região, o fronte oumeriano desmoronou sob as forças de Heimzuck.
+Livros de história futuramente atribuiriam as derrotas a problemas logísticos e de comunicação: suprimentos não foram enviados, e ordens não foram passadas.
+Quando as tropas chegaram à sua torre, um sinal foi enviado para sua máquina: "Wvklrh wzh xrmazh, ovezmgz z Uvmrc."
+"Depois das cinzas, levanta a Fenix." 
+Ninguém atirou. Ninguém atacou. Mish cumpriu sua palavra.
+#
+Sob o céu nublado do horizonte norte, moscas escuras surgiram em volume. Toulann não conseguiu ser capturada.
+Como um enxame de vespas, centenas de bombas caíram dos céus, desmontando grande parte do avanço oumeriano. Lonpris, Arnheim, Endesberg, Sungarden... todas abaixo.
+Quando os aviões chegaram à sua torre, não havia mais tempo para escapar. Seu destino já estava selado.
+Boa noite, operador.
+#
+Sob o céu nublado do horizonte norte, moscas escuras surgiram em volume. Toulann não conseguiu ser capturada.
+Como um enxame de vespas, centenas de bombas caíram dos céus, desmontando grande parte do avanço oumeriano. Lonpris, Arnheim, Endesberg, Sungarden... todas abaixo.
+Quando os aviões chegaram à sua torre, porém... nenhuma bomba caiu. De alguma forma, você foi poupado. Mish cumpriu sua palavra.
+"Depois das cinzas, levanta a Fenix."
 #
 Você foi reportado por atividade suspeita por um de seus compatriotas. Não demorou muito até que Laurson encontrou sua mensagem de apoio ao Traidor.
 Três dias depois, você estava de costas para a parede - e de frente para um pelotão de fuzilamento.
@@ -8,6 +38,4 @@ Três dias depois, você estava de costas para a parede - e de frente para um pe
 "Soldado: você foi liberado de seus deveres."
 "Não podemos continuar esta guerra com um operador que ativamente desobedece nossas ordens."
 "Volte para sua cidade, garoto. Seu lugar não é aqui."
-#
-Eba gg.
-Ganhamo o jogo.
+"Por Oumer. Pela liberdade."

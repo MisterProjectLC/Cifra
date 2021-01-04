@@ -35,3 +35,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		emit_signal("done")
 	else:
 		advance_text()
+
+
+func set_speed_scale(scale):
+	$AnimationPlayer.set_speed_scale(scale)

@@ -84,7 +84,7 @@ func polybius(c, s, caps = false):
 func morse(string):
 	var s = ""
 	for c in string:
-		if c == ' ':
+		if c == ' ' or c == '.':
 			s += "/ "
 		elif c in alphabet:
 			s += morses[alphabet.find(c)] + " "
@@ -93,5 +93,5 @@ func morse(string):
 		elif c.is_valid_integer():
 			s += morse_nums[int(c)] + " "
 		else:
-			s += "/"
+			s += c + " "
 	return s

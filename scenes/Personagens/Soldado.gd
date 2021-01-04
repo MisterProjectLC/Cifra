@@ -12,6 +12,8 @@ var _progresso = 0
 var _ordem = ""
 var _message_received = ""
 
+signal morte
+
 func passar_turno():
 	if !_existente:
 		return false
@@ -64,8 +66,7 @@ func tomar_acoes():
 
 
 func enviar_pedido(texto, prioridade = 0, cifra = criptografia, titulo = nome + ", " + local):
-	if _existente:
-		.enviar_pedido(texto, prioridade, cifra, titulo)
+	.enviar_pedido(texto, prioridade, cifra, titulo)
 
 
 func receive_suprimentos(new):
@@ -78,7 +79,8 @@ func receive_companhias(new):
 
 # default response
 func receive_message(_message):
-	_message_received = _message
+	if _message != "Insistir":
+		_message_received = _message
 
 # GETTERS -----------------------------------------
 func get_local():
@@ -95,11 +97,12 @@ func received_message():
 
 func set_base(new):
 	base = new
-	local = new.get_local()
+	local = get_node(new).get_local()
 
 func fim():
 	_existente = false
 	_progresso = -1
+	emit_signal("morte", local)
 
 func recolher_suprimento():
 	if _progresso < 0:

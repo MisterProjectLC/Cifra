@@ -12,7 +12,7 @@ var mensagem_textos = {"Nulo":"...", "Atacar":"Avance contra o inimigo.",
 						"Recuar":"Recue para uma posicao segura.",
 						"Saquear":"Roube suprimentos.",
 						"Aviso":"Fuja. Laurson te procura.",
-						"Insistir":"Isso e mandatorio, soldado.",
+						"Insistir":"Soldado, eu insisto.",
 						"Amor":"Sei de seu amor secreto."}
 var explicacao = {"Nulo":"", "Atacar":"[Perde soldados, avanca posicao.]", 
 						"Recuar":"[Evita perdas, perde posicao.]",

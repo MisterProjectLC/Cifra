@@ -1,4 +1,6 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Retangulo.gd" type="Script" id=1]
 
 [node name="Pedidos" type="ColorRect"]
 anchor_left = 0.5
@@ -10,6 +12,7 @@ margin_top = -263.961
 margin_right = -142.9
 margin_bottom = 263.039
 color = Color( 1, 1, 1, 0 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -6,14 +6,18 @@ var active = false
 
 signal clicked
 
+func set_color(new):
+	color = Color(new)
+
 func _on_Notas_mouse_entered():
-	color = Color(hover_color)
+	set_color(hover_color)
 
 func _on_Notas_mouse_exited():
-	color = Color(normal_color)
+	set_color(normal_color)
 
 
 func _on_Notas_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		active = !active
+		Audio.play_sound(Audio.paper)
 		emit_signal("clicked", active)
