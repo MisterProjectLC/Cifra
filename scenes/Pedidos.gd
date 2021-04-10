@@ -24,8 +24,8 @@ func novo_pedido(nome, cripto, texto, prioridade = 0):
 	
 	add_child(new)
 	new.margin_left = 10
-	new.margin_top = 800
-	new.margin_bottom = 847
+	new.margin_top = 1200
+	new.margin_bottom = 1247
 	
 	var i = 0
 	for child in get_children():

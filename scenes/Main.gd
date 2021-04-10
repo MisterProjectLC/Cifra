@@ -82,10 +82,10 @@ func _on_FadeIn_done():
 			$Recebimento/Pedidos/PedidosManager.revelar_pedido()
 			if semana == 0:
 				$NovaMensagem.wait_time = 10
-				$Turno.wait_time = 180
+				$Turno.wait_time = 60*5
 			else:
 				$NovaMensagem.wait_time = 20
-				$Turno.wait_time = 60*10
+				$Turno.wait_time = 60*12
 			
 			$NovaMensagem.start()
 			$Timer.start()
@@ -297,7 +297,8 @@ func _on_Weinstein_disco():
 
 # GAME SIGNALS ----------------------
 func _on_Encerrar_button_up():
-	passar_turno()
+	if $Relogio/Relogio.get_time() > 5:
+		passar_turno()
 
 
 func atualizar_estoque(suprimentos, companhias):

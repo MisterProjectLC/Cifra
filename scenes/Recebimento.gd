@@ -51,7 +51,7 @@ func _on_RightCifra_button_up():
 func _on_LineEdit_text_changed(new_text):
 	var tabela_atual = $TabelaCifra.get_child(cifra_atual+4)
 	for i in range(tabela_atual.get_children().size()-1):
-		tabela_atual.get_child(i).set("custom_colors/font_color", Color(0.3,0.3,0.3))
+		tabela_atual.get_child(i).set("custom_colors/font_color", Color(0.45,0.45,0.45))
 	
 	if new_text.length() == 0:
 		return

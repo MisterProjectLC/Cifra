@@ -25,3 +25,7 @@ func relogio():
 func reset():
 	clock = 0
 	$Label.text = "10:00"
+
+
+func get_time():
+	return clock
